@@ -19,15 +19,20 @@ public class Player : MonoBehaviour
     public bool canMove = true;
     public bool GameOver = false;
     public bool freeze;
-    public GameObject Weapon;
+    
     public AudioClip JumpSound;
     public AudioClip DeathSound;
     private AudioSource asPlayer;
-    public Animator animator;
+    public Animator CameraAnimator;
     public Animator BorderIdle;
 
-    public float AnxityLV1 = 2.0f; // Set the Anxity level
+    public int AnxityLvl;
+    public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity level change
+
+    public bool EmptyLeftHand;
+    public bool EmptyRightHand;
+
 
 
     void Start()
@@ -39,6 +44,9 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        //sets the hands empty at the start
+        EmptyLeftHand = true;
+        EmptyRightHand = true;
         
     }
 
@@ -56,17 +64,55 @@ public class Player : MonoBehaviour
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
 
-        Anxity(isRunning);
+        AnxityChangeRate(isRunning, AnxityEffectValue);
         if (isRunning)
         {
-            animator.SetFloat("Speed", runningSpeed);
+            CameraAnimator.SetFloat("Speed", runningSpeed);
         }
         if (!isRunning)
         {
-            animator.SetFloat("Speed", walkingSpeed);
+            CameraAnimator.SetFloat("Speed", walkingSpeed);
         }
-        
-       
+
+
+
+
+        if (Input.GetMouseButtonDown(0) && canMove && !GameOver)
+        {
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Check if the hit object has an interactable component
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                //I pick up the book
+
+                if (interactable != null && EmptyLeftHand == true)
+                {
+                    // Call the interaction method on the interactable object
+                    interactable.BookInteract(EmptyLeftHand);
+                    EmptyLeftHand = false;
+                }
+
+                //we have the book in hand now
+
+                if(interactable != null && EmptyLeftHand == false)
+                {
+                    //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
+                }
+
+
+                if (interactable == null)
+                {
+                    Debug.Log("not an interactable");
+                }
+
+            }
+        }
+
+
 
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !GameOver)
@@ -103,16 +149,16 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // note for review consider establishing the player's collider with otherand then set tags to the triggers!@!
+        // note for review consider establishing the player's collider with "other" and then set tags for the triggers!@!
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            
-            
-            animator.SetTrigger("Death");
+
+
+            CameraAnimator.SetTrigger("Death");
             asPlayer.PlayOneShot(DeathSound, 1.0f);
             canMove = false;
             GameOver = true;
@@ -120,48 +166,32 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Anxity(bool Action)
+    public void AnxityChangeRate(bool Action, float AnxityEffect)
     {
         //area to Caluclate Anxity effects and mechanic
         if (Action && canMove && characterController.isGrounded && !GameOver)
         {
-            BorderIdle.speed = AnxityLV1;
+            BorderIdle.speed = AnxityEffect;
         }
         else
         {
             BorderIdle.speed = 1;
         }
 
-
     }
 
-    public void AAnxity(bool action)
+    public void Anxity(bool Action, int AnxityLevel)
     {
-        if (action && canMove && characterController.isGrounded && !GameOver)
+        if (Action)
         {
-            StartCoroutine(ChangeAnxityLevelSmooth(AnxityLV1, anxityChangeDuration));
-        }
-        else
-        {
-            StartCoroutine(ChangeAnxityLevelSmooth(1.0f, anxityChangeDuration));
+            AnxityLvl = AnxityLvl + AnxityLevel;
         }
     }
 
-    IEnumerator ChangeAnxityLevelSmooth(float targetAnxityLevel, float duration)
-    {
-        float currentAnxityLevel = BorderIdle.speed;
-        float timer = 0f;
+    
+    
 
-        while (timer < duration)
-        {
-            BorderIdle.speed = Mathf.Lerp(currentAnxityLevel, targetAnxityLevel, timer / duration);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-
-        private void pickUpBook()
+    private void pickUpBook()
     {
 
     }
