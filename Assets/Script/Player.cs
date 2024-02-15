@@ -30,6 +30,10 @@ public class Player : MonoBehaviour
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity level change
 
+    private bool inRadius;
+
+    public Animator leftHandAnim;
+    public Animator rightHandAnim;
     public bool EmptyLeftHand;
     public bool EmptyRightHand;
 
@@ -49,6 +53,8 @@ public class Player : MonoBehaviour
         EmptyRightHand = true;
         
     }
+
+    
 
     void Update()
     {
@@ -75,42 +81,53 @@ public class Player : MonoBehaviour
         }
 
 
-
-
-        if (Input.GetMouseButtonDown(0) && canMove && !GameOver)
-        {
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+        
+            if (Input.GetMouseButtonDown(1) && canMove && !GameOver)
             {
-                // Check if the hit object has an interactable component
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                rightHandAnim.SetTrigger("rightHandPick");
+                Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
-                //I pick up the book
-
-                if (interactable != null && EmptyLeftHand == true)
+                if (Physics.Raycast(ray, out hit))
                 {
-                    // Call the interaction method on the interactable object
-                    interactable.BookInteract(EmptyLeftHand);
-                    EmptyLeftHand = false;
+                    // Check if the hit object has an interactable component
+                    Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                    //I pick up the book
+
+                    if (interactable != null && EmptyLeftHand == true)
+                    {
+                        // Call the interaction method on the interactable object
+                        interactable.BookInteract(EmptyLeftHand);
+                        rightHandAnim.SetBool("HasBook", true);
+                        EmptyLeftHand = false;
+                        return;
+                    }
+
+                    //we have the book in hand now
+
+                    if (interactable != null && EmptyLeftHand == false)
+                    {
+
+                        //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
+                        interactable.putBookDown(EmptyLeftHand);
+                        rightHandAnim.SetTrigger("putBookDown");
+                        rightHandAnim.SetBool("HasBook", false);
+                        EmptyLeftHand = true;
+                        return;
+
+                    }
+
+
+                    if (interactable == null)
+                    {
+                        Debug.Log("not an interactable");
+                    }
+
                 }
-
-                //we have the book in hand now
-
-                if(interactable != null && EmptyLeftHand == false)
-                {
-                    //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
-                }
-
-
-                if (interactable == null)
-                {
-                    Debug.Log("not an interactable");
-                }
-
             }
-        }
+        
+       
 
 
 
@@ -146,11 +163,7 @@ public class Player : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // note for review consider establishing the player's collider with "other" and then set tags for the triggers!@!
-    }
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -188,22 +201,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    
-    
-
-    private void pickUpBook()
-    {
-
-    }
-
-    private void putdownBook()
-    {
-
-    }
-
-    private void Study()
-    {
-
-    }
 
 }
