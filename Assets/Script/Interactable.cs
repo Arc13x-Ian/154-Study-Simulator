@@ -27,7 +27,7 @@ public class Interactable : MonoBehaviour
     {
         Debug.Log("Interacting with " + gameObject.name);
 
-        if (gameObject.tag == "Study Spot" && EmptyHand == false && StoredItem != null)
+        if (gameObject.tag == "Study Spot" && EmptyHand == false)
         {
             //set something up to put the book down on
 

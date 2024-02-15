@@ -5,33 +5,44 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //Player Stats
+    //      Speed
     public float walkingSpeed = 7.0f;
     public float runningSpeed = 11.0f;
+    //      Jump height
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
+    //      Camera Stats
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+    //      Player physics Reference
     public Rigidbody rb;
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
+
+    //      movement and gameOver Reference 
     public bool canMove = true;
     public bool GameOver = false;
     public bool freeze;
     
+    //      Animatoin and Audio
     public AudioClip JumpSound;
     public AudioClip DeathSound;
     private AudioSource asPlayer;
     public Animator CameraAnimator;
     public Animator BorderIdle;
 
+    //      Anxity Values for Game Mechanics
     public int AnxityLvl;
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity level change
 
+    //      Tester bools for Methods
     private bool inRadius;
 
+    //      Hand UI
     public Animator leftHandAnim;
     public Animator rightHandAnim;
     public bool EmptyLeftHand;
@@ -59,7 +70,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        // We are grounded, so recalculate move direction based on axes
+        // We are grounded, so re-calculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         // Press Left Shift to run
