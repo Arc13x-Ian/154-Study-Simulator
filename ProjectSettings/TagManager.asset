@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Book
+  - Study Spot
+  - Energy Drink
+  - Ear Plugs
   layers:
   - Default
   - TransparentFX
