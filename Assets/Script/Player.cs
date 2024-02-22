@@ -37,16 +37,18 @@ public class Player : MonoBehaviour
     //      Anxity Values for Game Mechanics
     public int AnxityLvl;
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
-    public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity level change
+    public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity effect change
 
     //      Tester bools for Methods
     private bool inRadius;
 
-    //      Hand UI
+    //       UI
     public Animator leftHandAnim;
     public Animator rightHandAnim;
     public bool EmptyLeftHand;
     public bool EmptyRightHand;
+    public GameObject StudyScreen;
+    public QuizManager QuizManager;
 
 
 
@@ -62,7 +64,9 @@ public class Player : MonoBehaviour
         //sets the hands empty at the start
         EmptyLeftHand = true;
         EmptyRightHand = true;
-        
+
+        StudyScreen.SetActive(false);
+
     }
 
     
@@ -92,7 +96,7 @@ public class Player : MonoBehaviour
         }
 
 
-        
+        //  EVERYTHING THAT WILL BE INTERACTABLE
             if (Input.GetMouseButtonDown(1) && canMove && !GameOver)
             {
                 rightHandAnim.SetTrigger("rightHandPick");
@@ -117,32 +121,40 @@ public class Player : MonoBehaviour
 
                     //we have the book in hand now
 
-                    if (interactable != null && EmptyLeftHand == false)
+                    else if (interactable != null && EmptyLeftHand == false)
                     {
-
+                        Debug.Log("Placing Book Down ");
                         //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
                         interactable.putBookDown(EmptyLeftHand);
                         rightHandAnim.SetTrigger("putBookDown");
                         rightHandAnim.SetBool("HasBook", false);
                         EmptyLeftHand = true;
+                        Study();
                         return;
 
                     }
 
-
-                    if (interactable == null)
+                    // if there is nothing to interact with then we do not do anything to it
+                    else if (interactable == null)
                     {
                         Debug.Log("not an interactable");
                     }
 
                 }
             }
-        
-       
+
+        //if there are no more questions from a book it needs to take the player out of the UI study screen
+        if (QuizManager == null)
+        {
+            StudyScreen.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
 
 
 
+        //Jumping Logic
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !GameOver)
         {
             moveDirection.y = jumpSpeed;
@@ -153,12 +165,14 @@ public class Player : MonoBehaviour
             moveDirection.y = movementDirectionY;
         }
 
+        //Gameover Logic
         if (GameOver)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
 
+        //math for gravity
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
@@ -166,6 +180,7 @@ public class Player : MonoBehaviour
 
         characterController.Move(moveDirection * Time.deltaTime);
 
+        //math for movement
         if (canMove && !GameOver)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
@@ -210,6 +225,15 @@ public class Player : MonoBehaviour
         {
             AnxityLvl = AnxityLvl + AnxityLevel;
         }
+    }
+
+
+    private void Study()
+    {
+        StudyScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
     }
 
 
