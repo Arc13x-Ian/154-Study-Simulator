@@ -5,7 +5,7 @@ using UnityEngine;
 public class teleporterScript : MonoBehaviour
 {
     public GameObject[] teleportPoints = null;
-    public int iterationCount = 10;
+    public int iterationCount = 3;
     public Rigidbody Snackerman;
 
     // Start is called before the first frame update
@@ -13,7 +13,7 @@ public class teleporterScript : MonoBehaviour
     {
         Snackerman = GetComponent<Rigidbody>();
         teleportPoints = GameObject.FindGameObjectsWithTag("Study Spot");
-        Invoke("MovementManagement", 5.0f);
+        StartCoroutine(Portloop());
     }
 
     // Update is called once per frame
@@ -24,19 +24,40 @@ public class teleporterScript : MonoBehaviour
 
     void MovementManagement()
     {
-        for(int i = 0; i < iterationCount; i++)
-        {
-            Invoke("Teleport", 2.0f);
-        }
+       
     }
 
     void Teleport()
     {
+       
+
+
+    }
+
+    IEnumerator Portloop()
+    {
         int index = 0;
-        Snackerman.MovePosition(teleportPoints[index].transform.position);
-        index++;
-        Debug.Log("I have attempted to teleport!");
 
+        for (int i = 0; i < iterationCount; i++)
+        {
+            
+            Snackerman.MovePosition(teleportPoints[index].transform.position);
+            index++;
+            Debug.Log("I have attempted to teleport!");
 
+            yield return new WaitForSeconds(5);
+        }
+
+        Snackerman.MovePosition(teleportPoints[1].transform.position);
+
+        StartCoroutine(Replay());
+
+    }
+
+    IEnumerator Replay()
+    {
+        yield return new WaitForSeconds(5);
+
+        StartCoroutine(Portloop());
     }
 }

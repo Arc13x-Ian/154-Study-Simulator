@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportPoints: []
-  iterationCount: 11
+  iterationCount: 3
   Snackerman: {fileID: 1563889284}
 --- !u!54 &1563889284
 Rigidbody:
