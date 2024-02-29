@@ -30,6 +30,13 @@ public class Player : MonoBehaviour
     //      Animatoin and Audio
     public AudioClip JumpSound;
     public AudioClip DeathSound;
+
+    public AudioClip BookPickUp;
+    public AudioClip Pick;
+    public AudioClip BookPutDown;
+    public AudioClip StudySound;
+    public AudioClip DrinkTea;
+
     private AudioSource asPlayer;
     public Animator CameraAnimator;
     public Animator BorderIdle;
@@ -41,6 +48,7 @@ public class Player : MonoBehaviour
 
     //      Tester bools for Methods
     private bool inRadius;
+    public bool StudyDone;
 
     //       UI
     public Animator leftHandAnim;
@@ -49,6 +57,7 @@ public class Player : MonoBehaviour
     public bool EmptyRightHand;
     public GameObject StudyScreen;
     public QuizManager QuizManager;
+    public AnxityMeter AnxityMeter;
 
 
 
@@ -56,7 +65,8 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         asPlayer = GetComponent<AudioSource>();
-        
+        AnxityMeter = FindAnyObjectByType<AnxityMeter>();
+
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -65,6 +75,7 @@ public class Player : MonoBehaviour
         EmptyLeftHand = true;
         EmptyRightHand = true;
 
+        StudyDone = true;
         StudyScreen.SetActive(false);
 
     }
@@ -99,6 +110,7 @@ public class Player : MonoBehaviour
         //  EVERYTHING THAT WILL BE INTERACTABLE
             if (Input.GetMouseButtonDown(1) && canMove && !GameOver)
             {
+                asPlayer.PlayOneShot(Pick);
                 rightHandAnim.SetTrigger("rightHandPick");
                 Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
@@ -110,26 +122,32 @@ public class Player : MonoBehaviour
 
                     //I pick up the book
 
-                    if (interactable != null && EmptyLeftHand == true)
+                    if (interactable != null && EmptyRightHand == true && interactable.CompareTag("Book"))
                     {
                         // Call the interaction method on the interactable object
+
                         interactable.BookInteract(EmptyLeftHand);
+
                         rightHandAnim.SetBool("HasBook", true);
-                        EmptyLeftHand = false;
+                        EmptyRightHand = false;
+                        asPlayer.PlayOneShot(BookPickUp);
                         return;
                     }
 
                     //we have the book in hand now
 
-                    else if (interactable != null && EmptyLeftHand == false)
+                    else if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
                     {
                         Debug.Log("Placing Book Down ");
                         //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
-                        interactable.putBookDown(EmptyLeftHand);
+
+                        //interactable.putBookDown(EmptyLeftHand);
+
                         rightHandAnim.SetTrigger("putBookDown");
                         rightHandAnim.SetBool("HasBook", false);
-                        EmptyLeftHand = true;
+                        EmptyRightHand = true;
                         Study();
+                        asPlayer.PlayOneShot(BookPutDown);
                         return;
 
                     }
@@ -144,17 +162,58 @@ public class Player : MonoBehaviour
             }
 
         //if there are no more questions from a book it needs to take the player out of the UI study screen
-        if (QuizManager == null)
+        if (StudyDone == true)
         {
+            asPlayer.Stop();
             StudyScreen.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 
 
+        //Left Hand Interactables!
+        if (Input.GetMouseButtonDown(0) && canMove && !GameOver)
+        {
+            asPlayer.PlayOneShot(Pick);
+
+            leftHandAnim.SetTrigger("LeftHandPick");
+
+            
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Check if the hit object has an interactable component
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("Tea"))
+                {
+                    interactable.ItemInteract(EmptyLeftHand);
+                    EmptyLeftHand = false;
+                    leftHandAnim.SetBool("HasTea", true);
+                    asPlayer.PlayOneShot(Pick);
+                    
+                    
+                }
+
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
+        {
+            AnxityMeter.score = AnxityMeter.score - AnxityMeter.TeaRestore;
+            asPlayer.PlayOneShot(DrinkTea);
+            leftHandAnim.SetTrigger("DrinkTea");
+            leftHandAnim.SetBool("HasTea", false);
+            EmptyLeftHand = true;
+        }
 
 
-        //Jumping Logic
+
+
+            //Jumping Logic
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !GameOver)
         {
             moveDirection.y = jumpSpeed;
@@ -219,17 +278,11 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Anxity(bool Action, int AnxityLevel)
-    {
-        if (Action)
-        {
-            AnxityLvl = AnxityLvl + AnxityLevel;
-        }
-    }
-
 
     private void Study()
     {
+        asPlayer.PlayOneShot(StudySound);
+        StudyDone = false;
         StudyScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;

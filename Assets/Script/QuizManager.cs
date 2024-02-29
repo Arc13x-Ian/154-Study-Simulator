@@ -13,9 +13,20 @@ public class QuizManager : MonoBehaviour
 
     public TextMeshProUGUI Questiontxt;
 
+    
+
+    //reference to Player Variables
+    public Player Player;
+
     private void Start()
     {
         generateQuestions();
+
+        
+
+        //we get the player script from somewhere from the scene
+        Player = FindAnyObjectByType<Player>();
+
     }
     
     void setAnswers()
@@ -28,26 +39,39 @@ public class QuizManager : MonoBehaviour
             if(QnA[currentQuestions].CorrectAnswer == i + 1)
             {
                 options[i].GetComponent<Answer>().isCorrect = true;
+                
             }
+            
+            
         }
     }
 
     public void correct()
     {
-        generateQuestions();
+        
         QnA.RemoveAt(currentQuestions);
+        generateQuestions();
+
+
     }
 
 
 
     void generateQuestions()
     {
+        if (QnA.Count <= 0)
+        {
+            //Player.StudyScreen.SetActive(false);
+            Player.StudyDone = true;
+            Questiontxt.text = null;
+            
+        }
+
+
+
         currentQuestions = Random.Range(0, QnA.Count);
         Debug.Log(QnA.Count);
-        if (QnA.Count < 1)
-        {
-            Destroy(gameObject);
-        }
+        
 
         Questiontxt.text = QnA[currentQuestions].Questions;
         setAnswers();
