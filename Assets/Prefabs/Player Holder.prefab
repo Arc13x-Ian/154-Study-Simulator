@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 0}
+  quizManager: {fileID: 1038016109}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &492852799
 GameObject:
@@ -420,6 +420,58 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &577519994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 577519995}
+  - component: {fileID: 577519996}
+  m_Layer: 0
+  m_Name: AnxityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &577519995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577519994}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16.26, y: -1.32, z: -107.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3264869425648898702}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577519996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577519994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d9a3655ac56674bbf920bed8198cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  anxityScore: {fileID: 2082051337}
+  TeaRestore: 10
+  MinTimer: {fileID: 1780867452}
+  SecTimer: {fileID: 53544499}
+  Player: {fileID: 3264869425648898703}
+  seconds: 0
+  min: 0
 --- !u!1 &722163799
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +761,87 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!1 &1038016108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038016110}
+  - component: {fileID: 1038016109}
+  m_Layer: 0
+  m_Name: QuizManagerBook
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038016110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038016108}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16.26001, y: -1.3200073, z: -107.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3264869425648898702}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038016109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038016108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcd6e6a3c235c34f87c04dada80c73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QnA:
+  - Questions: How many sides does a Square have?
+    Answers:
+    - 4
+    - 1
+    - 3
+    - 100
+    CorrectAnswer: 1
+  - Questions: Where is the Heart located on this Diagram?
+    Answers:
+    - spot A
+    - Spot C
+    - Spot B
+    - Spot D
+    CorrectAnswer: 3
+  - Questions: What Year was it when the USA declared it's independance?
+    Answers:
+    - 1872
+    - 1776
+    - 1677
+    - idk
+    CorrectAnswer: 2
+  - Questions: what is 2 + 2?
+    Answers:
+    - 22
+    - 2
+    - 44
+    - 4
+    CorrectAnswer: 4
+  options:
+  - {fileID: 307139108}
+  - {fileID: 1677109229}
+  - {fileID: 2124686902}
+  - {fileID: 2044949214}
+  currentQuestions: 0
+  Questiontxt: {fileID: 804910468}
+  Player: {fileID: 3264869425648898703}
 --- !u!1 &1415213919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Correct!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1608,7 +1741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 0}
+  quizManager: {fileID: 1038016109}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &1780867450
 GameObject:
@@ -1966,7 +2099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 0}
+  quizManager: {fileID: 1038016109}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &2082051336
 GameObject:
@@ -2004,7 +2137,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 250, y: 0}
-  m_SizeDelta: {x: 50, y: 39}
+  m_SizeDelta: {x: 78.7, y: 39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082051338
 CanvasRenderer:
@@ -2034,7 +2167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 100.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2386,7 +2519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 0}
+  quizManager: {fileID: 1038016109}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &3264869424312072573
 GameObject:
@@ -3030,6 +3163,8 @@ Transform:
   - {fileID: 3264869425439928896}
   - {fileID: 3264869424930686792}
   - {fileID: 3264869425510343810}
+  - {fileID: 1038016110}
+  - {fileID: 577519995}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3062,6 +3197,7 @@ MonoBehaviour:
   Pick: {fileID: 0}
   BookPutDown: {fileID: 8300000, guid: 30effabbf2b244245a2d79c6cb490d12, type: 3}
   StudySound: {fileID: 8300000, guid: 92c2f3d30b2aeaf4eacc10aee5778ae6, type: 3}
+  DrinkTea: {fileID: 0}
   CameraAnimator: {fileID: 3264869424548785544}
   BorderIdle: {fileID: 3264869425270125146}
   AnxityLvl: 0
@@ -3073,7 +3209,8 @@ MonoBehaviour:
   EmptyLeftHand: 0
   EmptyRightHand: 0
   StudyScreen: {fileID: 876949838}
-  QuizManager: {fileID: 0}
+  QuizManager: {fileID: 1038016109}
+  AnxityMeter: {fileID: 577519996}
 --- !u!143 &3264869425648898696
 CharacterController:
   m_ObjectHideFlags: 0
