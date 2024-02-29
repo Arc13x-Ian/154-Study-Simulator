@@ -22,10 +22,25 @@ public class StressManager : MonoBehaviour
     {
         if(other.CompareTag("Stress Aura"))
         {
-            Invoke("stressRising", 0.2f);
-            Debug.Log("Stress at " + stress);
+           
+            StartCoroutine(StressCollide());
         }
     }
+
+    IEnumerator StressCollide()
+    {
+
+        if (stress <= 100)
+        {
+            
+            stress++;
+            Debug.Log("Stress at " + stress);
+            yield return new WaitForSeconds(10);
+        }
+      
+        
+    }
+
 
     void stressRising()
     {

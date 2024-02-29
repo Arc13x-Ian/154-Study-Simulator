@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
 
-    public GameObject StoredItem;
+    private GameObject StoredItem;
 
 
     //for the right hand
@@ -40,9 +40,9 @@ public class Interactable : MonoBehaviour
     //for the Left hand
     public void ItemInteract(bool EmptyHand)
     {
-        if (gameObject.tag == "Energy Drink")
+        if (gameObject.tag == "Tea" && EmptyHand == true)
         {
-
+            Destroy(gameObject);
         }
 
         if (gameObject.tag == "Ear Plugs")
