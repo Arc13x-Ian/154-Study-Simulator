@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class QuizManager : MonoBehaviour
 {
     public List<StudyQuestions> QnA;
     public GameObject[] options;
     public int currentQuestions;
+    public int CorrectAnswerIndex = 0;
 
 
     public TextMeshProUGUI Questiontxt;
@@ -28,7 +30,16 @@ public class QuizManager : MonoBehaviour
         Player = FindAnyObjectByType<Player>();
 
     }
-    
+
+    private void Update()
+    {
+        if(CorrectAnswerIndex >= 16)
+        {
+            SceneManager.LoadScene("GameOverScreen");
+        }
+    }
+
+
     void setAnswers()
     {
         for (int i = 0; i < options.Length; i++)
@@ -51,7 +62,7 @@ public class QuizManager : MonoBehaviour
         
         QnA.RemoveAt(currentQuestions);
         generateQuestions();
-
+        CorrectAnswerIndex++;
 
     }
 
@@ -59,7 +70,7 @@ public class QuizManager : MonoBehaviour
 
     void generateQuestions()
     {
-        if (QnA.Count <= 0)
+        if (QnA.Count == 0)
         {
             //Player.StudyScreen.SetActive(false);
             Player.StudyDone = true;

@@ -1,5 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &39920856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39920858}
+  - component: {fileID: 39920857}
+  m_Layer: 0
+  m_Name: Anxitry Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &39920858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39920856}
+  m_LocalRotation: {x: -0, y: 0.00059790286, z: -0, w: 0.9999998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3264869425648898702}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &39920857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39920856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d9a3655ac56674bbf920bed8198cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anxietyscore: 0
+  anxityScore: {fileID: 2082051337}
+  TeaRestore: 0
+  MinTimer: {fileID: 1780867452}
+  SecTimer: {fileID: 53544499}
+  Player: {fileID: 3264869425648898703}
+  seconds: 0
+  min: 0
 --- !u!1 &53544497
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +187,172 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &203449517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203449519}
+  - component: {fileID: 203449518}
+  m_Layer: 0
+  m_Name: Quiz Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203449519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203449517}
+  m_LocalRotation: {x: -0, y: 0.00059790286, z: -0, w: 0.9999998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3264869425648898702}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203449518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203449517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcd6e6a3c235c34f87c04dada80c73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QnA:
+  - Questions: What is  5 + 3 ?
+    Answers:
+    - 7
+    - 8
+    - 9
+    - 10
+    CorrectAnswer: 2
+  - Questions: If you have 2 apples and you get 3 more, how many apples do you have?
+    Answers:
+    - 3
+    - 4
+    - 5
+    - 6
+    CorrectAnswer: 3
+  - Questions: "What is  2 \xD7 4 ?"
+    Answers:
+    - 6
+    - 8
+    - 10
+    - 12
+    CorrectAnswer: 2
+  - Questions: if x + 2 = 7, what is the value of x?
+    Answers:
+    - 3
+    - 4
+    - 5
+    - 6
+    CorrectAnswer: 1
+  - Questions: Who was the first President of the United States?
+    Answers:
+    - Thomas Jefferson
+    - George Washington
+    - Abraham Lincoln
+    - John Adams
+    CorrectAnswer: 2
+  - Questions: In which year did Christopher Columbus first reach the Americas?
+    Answers:
+    - 1400
+    - 1492
+    - 1607
+    - 1776
+    CorrectAnswer: 2
+  - Questions: Which ancient civilization built the pyramids in Egypt?
+    Answers:
+    - Roman
+    - Greek
+    - Egyptian
+    - Mesopotamian
+    CorrectAnswer: 3
+  - Questions: During which war did the Battle of Gettysburg take place?
+    Answers:
+    - World War I
+    - American Civil War
+    - Revolutionary War
+    - World War II
+    CorrectAnswer: 2
+  - Questions: Which of the following is a mammal?
+    Answers:
+    - Snake
+    - Fish
+    - Dog
+    - Spider
+    CorrectAnswer: 3
+  - Questions: What is the process by which plants make their own food using sunlight?
+    Answers:
+    - Respiration
+    - Photosynthesis
+    - Digestion
+    - Fermentation
+    CorrectAnswer: 2
+  - Questions: Which planet is known as the "Red Planet"?
+    Answers:
+    - Venus
+    - Mars
+    - Jupiter
+    - Saturn
+    CorrectAnswer: 2
+  - Questions: What is the smallest unit of matter?
+    Answers:
+    - Atom
+    - Molecule
+    - Cell
+    - Particle
+    CorrectAnswer: 1
+  - Questions: Which of the following is a pronoun?
+    Answers:
+    - House
+    - Run
+    - He
+    - Blue
+    CorrectAnswer: 3
+  - Questions: What is the past tense of the verb "sing"?
+    Answers:
+    - Sang
+    - Sings
+    - Singing
+    - Sung
+    CorrectAnswer: 1
+  - Questions: Which word is a synonym for "happy"?
+    Answers:
+    - Sad
+    - Angry
+    - Joyful
+    - Tired
+    CorrectAnswer: 3
+  - Questions: What is the plural form of "child"?
+    Answers:
+    - Childrens
+    - Childs
+    - Childen
+    - Children
+    CorrectAnswer: 4
+  options:
+  - {fileID: 307139108}
+  - {fileID: 1677109229}
+  - {fileID: 2124686902}
+  - {fileID: 2044949214}
+  currentQuestions: 0
+  CorrectAnswerIndex: 12
+  Questiontxt: {fileID: 804910468}
+  Player: {fileID: 0}
 --- !u!1 &307139108
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 1038016109}
+  quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &492852799
 GameObject:
@@ -1117,7 +1335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Anxity Level:'
+  m_text: 'Anxiety Level:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1741,7 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 1038016109}
+  quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &1780867450
 GameObject:
@@ -2099,7 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 1038016109}
+  quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &2082051336
 GameObject:
@@ -2136,8 +2354,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 0}
-  m_SizeDelta: {x: 78.7, y: 39}
+  m_AnchoredPosition: {x: 265.1, y: 0}
+  m_SizeDelta: {x: 80.3, y: 39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082051338
 CanvasRenderer:
@@ -2519,7 +2737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  quizManager: {fileID: 1038016109}
+  quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
 --- !u!1 &3264869424312072573
 GameObject:
@@ -2645,14 +2863,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3264869424548785548}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.6855699, z: -0, w: 0.72800684}
   m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3264869425648898702}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -86.561, z: 0}
 --- !u!20 &3264869424548785550
 Camera:
   m_ObjectHideFlags: 0
@@ -3051,14 +3269,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3264869425439928897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.6819983, z: 0, w: 0.7313538}
   m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3264869425648898702}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -86, z: 0}
 --- !u!1 &3264869425510343809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,8 +3381,8 @@ Transform:
   - {fileID: 3264869425439928896}
   - {fileID: 3264869424930686792}
   - {fileID: 3264869425510343810}
-  - {fileID: 1038016110}
-  - {fileID: 577519995}
+  - {fileID: 203449519}
+  - {fileID: 39920858}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3187,7 +3405,7 @@ MonoBehaviour:
   playerCamera: {fileID: 3264869424548785550}
   lookSpeed: 2
   lookXLimit: 45
-  rb: {fileID: 0}
+  rb: {fileID: 3264869425648898697}
   canMove: 1
   GameOver: 0
   freeze: 0
@@ -3209,8 +3427,8 @@ MonoBehaviour:
   EmptyLeftHand: 0
   EmptyRightHand: 0
   StudyScreen: {fileID: 876949838}
-  QuizManager: {fileID: 1038016109}
-  AnxityMeter: {fileID: 577519996}
+  QuizManager: {fileID: 203449518}
+  AnxityMeter: {fileID: 39920857}
 --- !u!143 &3264869425648898696
 CharacterController:
   m_ObjectHideFlags: 0
