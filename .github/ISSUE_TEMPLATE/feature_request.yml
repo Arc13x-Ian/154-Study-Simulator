@@ -29,7 +29,7 @@ body:
   - type: textarea
     id: task-description
     attributes:
-      label: Briefly, what are you going to work on?
+      label: Overview
       description: A few sentances describing what you are going to do to move the project up the rubric. Also make sure to attach an image as part of the description
       placeholder: Some many things I want to add to the game!
     validations:
@@ -37,8 +37,8 @@ body:
   - type: textarea
     id: inspiration
     attributes:
-      label: Provide at least one example of a similiar element in another game.
-      description: Please list the game, how it relates and a URL to the game homepage.
+      label: Visualization
+      description: Please list similar feature in another game, how it relates and a URL to the game homepage OR upload your own image/sketch.
       placeholder: info here
     validations:
       required: true
@@ -61,9 +61,9 @@ body:
   - type: textarea
     id: test-case
     attributes:
-      label: How do I know it is ready? (Test case)
-      description: Describe how you know the tasks is ready and working for merge. What behavior will be expected from the prototype?
-      placeholder: fire will shoot out of the donut holes!
+      label: Test case
+      description:  Provide the steps it would take the user to reproduce the behavior
+      placeholder: 1) start game.   2) player hits 'W' to run towards donut.   3) Player intersects with donut.   4) Donut explodes, particle system triggered
     validations:
       required: true
 
