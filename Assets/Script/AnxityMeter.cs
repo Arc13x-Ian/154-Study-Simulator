@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class AnxityMeter : MonoBehaviour
 {
-    public float score = 0f;
+    public float Anxietyscore = 0f;
     public TextMeshProUGUI anxityScore;
     public float TeaRestore;
 
@@ -37,9 +38,9 @@ public class AnxityMeter : MonoBehaviour
 
     void Update()
     {
-        anxityScore.text = score.ToString("0.0");
+        anxityScore.text = Anxietyscore.ToString("0.0");
 
-        if (min == 5 && seconds == 59 || score >= 100)
+        if (min == 5 && seconds == 59 || Anxietyscore >= 100)
         {
             //end game
             Player.GameOver = true;
@@ -55,13 +56,13 @@ public class AnxityMeter : MonoBehaviour
         // Increase the score by 0.2 points while sprinting
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            score += 0.2f;
+            Anxietyscore += 0.2f;
 
         }
         //Increase the score by 0.1 points
         else
         {
-            score += 0.1f;
+            Anxietyscore += 0.1f;
 
         }
         //Debug.Log("Current Score: " + score);

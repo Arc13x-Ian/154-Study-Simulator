@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39920856}
   m_LocalRotation: {x: -0, y: 0.00059790286, z: -0, w: 0.9999998}
-  m_LocalPosition: {x: -123.33023, y: 11.693824, z: -5.6497965}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d9a3655ac56674bbf920bed8198cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  Anxietyscore: 0
   anxityScore: {fileID: 2082051337}
   TeaRestore: 0
   MinTimer: {fileID: 1780867452}
@@ -212,7 +212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203449517}
   m_LocalRotation: {x: -0, y: 0.00059790286, z: -0, w: 0.9999998}
-  m_LocalPosition: {x: -123.33023, y: 11.693824, z: -5.6497965}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -232,40 +232,125 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QnA:
-  - Questions: is this a quiz
+  - Questions: What is  5 + 3 ?
     Answers:
-    - yes
-    - no
-    - maybe
-    - idk
-    CorrectAnswer: 1
-  - Questions: is this a quiz
+    - 7
+    - 8
+    - 9
+    - 10
+    CorrectAnswer: 2
+  - Questions: If you have 2 apples and you get 3 more, how many apples do you have?
     Answers:
-    - yes
-    - no
-    - maybe
-    - idk
-    CorrectAnswer: 1
-  - Questions: is this a quiz
+    - 3
+    - 4
+    - 5
+    - 6
+    CorrectAnswer: 3
+  - Questions: "What is  2 \xD7 4 ?"
     Answers:
-    - yes
-    - no
-    - maybe
-    - idk
-    CorrectAnswer: 1
-  - Questions: is this a quiz
+    - 6
+    - 8
+    - 10
+    - 12
+    CorrectAnswer: 2
+  - Questions: if x + 2 = 7, what is the value of x?
     Answers:
-    - yes
-    - no
-    - maybe
-    - idk
+    - 3
+    - 4
+    - 5
+    - 6
     CorrectAnswer: 1
+  - Questions: Who was the first President of the United States?
+    Answers:
+    - Thomas Jefferson
+    - George Washington
+    - Abraham Lincoln
+    - John Adams
+    CorrectAnswer: 2
+  - Questions: In which year did Christopher Columbus first reach the Americas?
+    Answers:
+    - 1400
+    - 1492
+    - 1607
+    - 1776
+    CorrectAnswer: 2
+  - Questions: Which ancient civilization built the pyramids in Egypt?
+    Answers:
+    - Roman
+    - Greek
+    - Egyptian
+    - Mesopotamian
+    CorrectAnswer: 3
+  - Questions: During which war did the Battle of Gettysburg take place?
+    Answers:
+    - World War I
+    - American Civil War
+    - Revolutionary War
+    - World War II
+    CorrectAnswer: 2
+  - Questions: Which of the following is a mammal?
+    Answers:
+    - Snake
+    - Fish
+    - Dog
+    - Spider
+    CorrectAnswer: 3
+  - Questions: What is the process by which plants make their own food using sunlight?
+    Answers:
+    - Respiration
+    - Photosynthesis
+    - Digestion
+    - Fermentation
+    CorrectAnswer: 2
+  - Questions: Which planet is known as the "Red Planet"?
+    Answers:
+    - Venus
+    - Mars
+    - Jupiter
+    - Saturn
+    CorrectAnswer: 2
+  - Questions: What is the smallest unit of matter?
+    Answers:
+    - Atom
+    - Molecule
+    - Cell
+    - Particle
+    CorrectAnswer: 1
+  - Questions: Which of the following is a pronoun?
+    Answers:
+    - House
+    - Run
+    - He
+    - Blue
+    CorrectAnswer: 3
+  - Questions: What is the past tense of the verb "sing"?
+    Answers:
+    - Sang
+    - Sings
+    - Singing
+    - Sung
+    CorrectAnswer: 1
+  - Questions: Which word is a synonym for "happy"?
+    Answers:
+    - Sad
+    - Angry
+    - Joyful
+    - Tired
+    CorrectAnswer: 3
+  - Questions: What is the plural form of "child"?
+    Answers:
+    - Childrens
+    - Childs
+    - Childen
+    - Children
+    CorrectAnswer: 4
   options:
   - {fileID: 307139108}
   - {fileID: 1677109229}
   - {fileID: 2124686902}
   - {fileID: 2044949214}
   currentQuestions: 0
+  CorrectAnswerIndex: 12
   Questiontxt: {fileID: 804910468}
   Player: {fileID: 0}
 --- !u!1 &307139108
@@ -1117,7 +1202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Anxity Level:'
+  m_text: 'Anxiety Level:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1387,7 +1472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Correct!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2136,8 +2221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 0}
-  m_SizeDelta: {x: 50, y: 39}
+  m_AnchoredPosition: {x: 265.1, y: 0}
+  m_SizeDelta: {x: 80.3, y: 39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082051338
 CanvasRenderer:
@@ -3187,7 +3272,7 @@ MonoBehaviour:
   playerCamera: {fileID: 3264869424548785550}
   lookSpeed: 2
   lookXLimit: 45
-  rb: {fileID: 0}
+  rb: {fileID: 3264869425648898697}
   canMove: 1
   GameOver: 0
   freeze: 0
@@ -3210,7 +3295,7 @@ MonoBehaviour:
   EmptyRightHand: 0
   StudyScreen: {fileID: 876949838}
   QuizManager: {fileID: 203449518}
-  AnxityMeter: {fileID: 0}
+  AnxityMeter: {fileID: 39920857}
 --- !u!143 &3264869425648898696
 CharacterController:
   m_ObjectHideFlags: 0

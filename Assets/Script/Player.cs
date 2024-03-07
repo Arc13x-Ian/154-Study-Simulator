@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -203,7 +204,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
         {
-            AnxityMeter.score = AnxityMeter.score - AnxityMeter.TeaRestore;
+            AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
             asPlayer.PlayOneShot(DrinkTea);
             leftHandAnim.SetTrigger("DrinkTea");
             leftHandAnim.SetBool("HasTea", false);
@@ -229,6 +230,7 @@ public class Player : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            SceneManager.LoadScene("GameOverScreen");
         }
 
         //math for gravity
@@ -262,6 +264,29 @@ public class Player : MonoBehaviour
             GameOver = true;
             Debug.Log("GameOver, you lose!");
         }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Stress Aura"))
+        {
+
+            StartCoroutine(StressCollide());
+        }
+    }
+
+    IEnumerator StressCollide()
+    {
+
+        if (AnxityMeter.Anxietyscore <= 100)
+        {
+
+            AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore + 0.1f;
+            Debug.Log("Stress at " + AnxityMeter.Anxietyscore);
+            yield return new WaitForSeconds(10);
+        }
+
+
     }
 
     public void AnxityChangeRate(bool Action, float AnxityEffect)
