@@ -29479,26 +29479,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 39920857, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
-      propertyPath: TeaRestore
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3264869424973656807, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 3264869424973656807, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 3264869424973656807, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 3264869424973656807, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 125
-      objectReference: {fileID: 0}
     - target: {fileID: 3264869425648898700, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
       propertyPath: m_Name
       value: Player Holder
@@ -29547,10 +29527,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3264869425648898703, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
-      propertyPath: Pick
-      value: 
-      objectReference: {fileID: 8300000, guid: fee2265e66d98814fa70dee7959f84de, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 937c497e0dd4fe44cb4b70642e5d3d5d, type: 3}
 --- !u!1 &2110599697

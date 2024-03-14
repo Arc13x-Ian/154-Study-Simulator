@@ -7,6 +7,8 @@ public class teleporterScript : MonoBehaviour
     public GameObject[] teleportPoints = null;
     public int iterationCount = 3;
     public Rigidbody Snackerman;
+    BoxCollider StudyCollider;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,18 @@ public class teleporterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for(int x = 0; x < teleportPoints.Length; x++)
+        {
+            if(gameObject.transform.position == teleportPoints[x].transform.position)
+            {
+                teleportPoints[x].SetActive(false);
+
+            }
+            else
+            {
+                teleportPoints[x].SetActive(true);
+            }
+        }
         
     }
 
