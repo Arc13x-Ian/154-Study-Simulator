@@ -6,6 +6,8 @@ public class Interactable : MonoBehaviour
 {
 
     private GameObject StoredItem;
+    public AudioClip PickupSound;
+    private AudioSource audioSource;
 
 
     //for the right hand
@@ -17,9 +19,15 @@ public class Interactable : MonoBehaviour
         if(gameObject.tag == "Book" && EmptyHand)
         {
             StoredItem = gameObject;
-            Destroy(gameObject);
-            
-            
+            if (audioSource != null && PickupSound != null)
+            {
+                audioSource.PlayOneShot(PickupSound);
+                Destroy(gameObject, PickupSound.length);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -28,7 +36,15 @@ public class Interactable : MonoBehaviour
     {
         if (gameObject.tag == "Tea" && EmptyHand == true)
         {
-            Destroy(gameObject);
+            if (audioSource != null && PickupSound != null)
+            {
+                audioSource.PlayOneShot(PickupSound);
+                Destroy(gameObject, PickupSound.length);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         if (gameObject.tag == "Ear Plugs")
@@ -41,7 +57,7 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

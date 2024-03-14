@@ -37,8 +37,10 @@ public class Player : MonoBehaviour
     public AudioClip BookPutDown;
     public AudioClip StudySound;
     public AudioClip DrinkTea;
+    public AudioClip heartbeatSound;
 
     private AudioSource asPlayer;
+    private AudioSource heartbeatAudioSource;
     public Animator CameraAnimator;
     public Animator BorderIdle;
 

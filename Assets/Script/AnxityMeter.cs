@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class AnxityMeter : MonoBehaviour
 {
+    public float score = 0f;
+
     public float Anxietyscore = 0f;
     public TextMeshProUGUI anxityScore;
     public float TeaRestore;
@@ -74,6 +77,10 @@ public class AnxityMeter : MonoBehaviour
 
         }
         //Debug.Log("Current Score: " + score);
+    }
+    public void ModifyAnxiety(float amount)
+    {
+        score += amount;
     }
 
     private IEnumerator TimeCounter()
