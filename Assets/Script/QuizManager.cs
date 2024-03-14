@@ -33,9 +33,10 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
-        if(CorrectAnswerIndex >= 16)
+        if(CorrectAnswerIndex >= 4)
         {
-            SceneManager.LoadScene("GameOverScreen");
+            Player.StudyDone = true;
+            CorrectAnswerIndex = CorrectAnswerIndex - 4;
         }
     }
 
@@ -61,8 +62,8 @@ public class QuizManager : MonoBehaviour
     {
         
         QnA.RemoveAt(currentQuestions);
-        generateQuestions();
         CorrectAnswerIndex++;
+        generateQuestions();
 
     }
 

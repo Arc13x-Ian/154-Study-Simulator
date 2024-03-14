@@ -31,20 +31,6 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void putBookDown(bool EmptyHand)
-    {
-        Debug.Log("Interacting with " + gameObject.name);
-
-        if (gameObject.tag == "Study Spot" && EmptyHand == false)
-        {
-            //set something up to put the book down on
-
-
-
-
-        }
-    }
-
     //for the Left hand
     public void ItemInteract(bool EmptyHand)
     {
@@ -66,9 +52,6 @@ public class Interactable : MonoBehaviour
 
         }
 
-
-
-
     }
 
 
@@ -80,6 +63,13 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameObject.tag == "Study Spot")
+        {
+            //set something up to block the player from interacting with the desk while the snacker man is there
+
+
+
+
+        }
     }
 }

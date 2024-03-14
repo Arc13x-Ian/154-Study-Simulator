@@ -42,6 +42,14 @@ public class AnxityMeter : MonoBehaviour
     void Update()
     {
         anxityScore.text = Anxietyscore.ToString("0.0");
+        if (Anxietyscore < 0f)
+        {
+            Anxietyscore = 0;
+        }
+        if (Anxietyscore > 100f)
+        {
+            Anxietyscore = 100f;
+        }
 
         if (min == 5 && seconds == 59 || Anxietyscore >= 100)
         {
