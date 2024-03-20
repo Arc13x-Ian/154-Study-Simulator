@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
 
-    private GameObject StoredItem;
+
     public AudioClip PickupSound;
     private AudioSource audioSource;
 
@@ -18,7 +18,6 @@ public class Interactable : MonoBehaviour
 
         if(gameObject.tag == "Book" && EmptyHand)
         {
-            StoredItem = gameObject;
             if (audioSource != null && PickupSound != null)
             {
                 audioSource.PlayOneShot(PickupSound);
@@ -47,9 +46,10 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        if (gameObject.tag == "Ear Plugs")
+        if (gameObject.tag == "headPhones")
         {
-
+            Destroy(gameObject);
+            audioSource.PlayOneShot(PickupSound);
         }
 
     }
@@ -63,13 +63,6 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.tag == "Study Spot")
-        {
-            //set something up to block the player from interacting with the desk while the snacker man is there
-
-
-
-
-        }
+        
     }
 }
