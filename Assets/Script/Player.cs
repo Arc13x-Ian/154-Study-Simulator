@@ -37,8 +37,10 @@ public class Player : MonoBehaviour
     public AudioClip BookPutDown;
     public AudioClip StudySound;
     public AudioClip DrinkTea;
+    public AudioClip heartbeatSound;
 
     private AudioSource asPlayer;
+    private AudioSource heartbeatAudioSource;
     public Animator CameraAnimator;
     public Animator BorderIdle;
 
@@ -46,6 +48,8 @@ public class Player : MonoBehaviour
     public int AnxityLvl;
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity effect change
+    public bool Headphones = false; // a bool to turn off and on when the player has the headphones on
+    private float HeadPhoneDuration = 5.0f;
 
     //      Tester bools for Methods
     private bool inRadius;
@@ -196,6 +200,16 @@ public class Player : MonoBehaviour
                     asPlayer.PlayOneShot(Pick);
                     
                     
+                }
+
+                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("HeadPhones"))
+                {
+                    interactable.ItemInteract(EmptyLeftHand);
+                    EmptyLeftHand = false;
+                    leftHandAnim.SetBool("HasTea", true);
+                    asPlayer.PlayOneShot(Pick);
+
+
                 }
 
             }

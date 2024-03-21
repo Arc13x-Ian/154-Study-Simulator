@@ -71,6 +71,7 @@ public class AnxityMeter : MonoBehaviour
     public void ModifyAnxiety(float amount)
     {
         score += amount;
+        Debug.Log("Anxiety Score: " + score);
     }
 
     private IEnumerator TimeCounter()
