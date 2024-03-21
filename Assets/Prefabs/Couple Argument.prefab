@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4533898526445729721
+--- !u!1 &7830065661374640930
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4533898526445729725}
-  - component: {fileID: 4533898526445729724}
-  - component: {fileID: 4533898526445729727}
-  - component: {fileID: 4533898526445729726}
+  - component: {fileID: 7830065661374640958}
+  - component: {fileID: 7830065661374640929}
+  - component: {fileID: 7830065661374640928}
+  - component: {fileID: 7830065661374640931}
   m_Layer: 0
-  m_Name: Group Of People Fighting 1
+  m_Name: Couple Argument
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4533898526445729725
+--- !u!4 &7830065661374640958
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4533898526445729721}
+  m_GameObject: {fileID: 7830065661374640930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.787827, y: 4.894702, z: 75.09036}
+  m_LocalPosition: {x: 48.12, y: -1.23, z: 87.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &4533898526445729724
+--- !u!114 &7830065661374640929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7830065661374640930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735696e35db88d844a8a470dd669e8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundRange: 20
+--- !u!82 &7830065661374640928
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4533898526445729721}
+  m_GameObject: {fileID: 7830065661374640930}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f99177d7e80f4fa4482aa2563f1df169, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2a4b30dc3b7bc224188215c26ba6b1e8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -65,23 +78,59 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.05
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -20.007967
+      outSlope: -20.007967
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.5
+      inSlope: -5.0019917
+      outSlope: -5.0019917
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.25
+      inSlope: -1.2504979
+      outSlope: -1.2504979
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.125
+      inSlope: -0.31262448
+      outSlope: -0.31262448
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7940491
+      value: 0.033325195
+      inSlope: -0.18962358
+      outSlope: -0.18962358
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.47976506
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.0062377937
+      inSlope: -0.05001994
+      outSlope: -0.05001994
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -130,29 +179,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!135 &4533898526445729727
+--- !u!135 &7830065661374640931
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4533898526445729721}
+  m_GameObject: {fileID: 7830065661374640930}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 28.032356
-  m_Center: {x: 0, y: 0, z: 0.05580139}
---- !u!114 &4533898526445729726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4533898526445729721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735696e35db88d844a8a470dd669e8ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundRange: 20
+  m_Radius: 29.600931
+  m_Center: {x: -4.9674397, y: 0, z: 0}
