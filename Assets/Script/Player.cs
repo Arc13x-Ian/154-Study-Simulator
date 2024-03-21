@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     //      Speed
     public float walkingSpeed = 7.0f;
     public float runningSpeed = 11.0f;
+    
     //      Jump height
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
@@ -39,15 +40,17 @@ public class Player : MonoBehaviour
     public AudioClip DrinkTea;
     public AudioClip heartbeatSound;
 
+
     private AudioSource asPlayer;
     private AudioSource heartbeatAudioSource;
-    public Animator CameraAnimator;
     public Animator BorderIdle;
 
     //      Anxity Values for Game Mechanics
     public int AnxityLvl;
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity effect change
+    public bool Headphones = false; // a bool to turn off and on when the player has the headphones on
+    private float HeadPhoneDuration = 5.0f;
 
     //      Tester bools for Methods
     private bool inRadius;
@@ -66,9 +69,13 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        
+
         characterController = GetComponent<CharacterController>();
-        asPlayer = GetComponent<AudioSource>();
+        asPlayer = gameObject.AddComponent<AudioSource>();
         AnxityMeter = FindAnyObjectByType<AnxityMeter>();
+
+        asPlayer.clip = Pick;
 
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -91,78 +98,68 @@ public class Player : MonoBehaviour
         // We are grounded, so re-calculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
-        // Press Left Shift to run
+        // movement math
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-
-        AnxityChangeRate(isRunning, AnxityEffectValue);
-        if (isRunning)
-        {
-            CameraAnimator.SetFloat("Speed", runningSpeed);
-        }
-        if (!isRunning)
-        {
-            CameraAnimator.SetFloat("Speed", walkingSpeed);
-        }
+        bool isWalking = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
 
 
         //  EVERYTHING THAT WILL BE INTERACTABLE
-            if (Input.GetMouseButtonDown(1) && canMove && !GameOver)
+        if (Input.GetMouseButtonDown(1) && canMove && !GameOver)
+        {
+            rightHandAnim.SetTrigger("rightHandPick");
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
             {
-                asPlayer.PlayOneShot(Pick);
-                rightHandAnim.SetTrigger("rightHandPick");
-                Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
+                // Check if the hit object has an interactable component
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
 
-                if (Physics.Raycast(ray, out hit))
+                //I pick up the book
+
+                if (interactable != null && EmptyRightHand == true && interactable.CompareTag("Book"))
                 {
-                    // Check if the hit object has an interactable component
-                    Interactable interactable = hit.collider.GetComponent<Interactable>();
+                    // Call the interaction method on the interactable object
 
-                    //I pick up the book
+                    interactable.BookInteract(EmptyLeftHand);
 
-                    if (interactable != null && EmptyRightHand == true && interactable.CompareTag("Book"))
-                    {
-                        // Call the interaction method on the interactable object
+                    rightHandAnim.SetBool("HasBook", true);
+                    EmptyRightHand = false;
+                    asPlayer.Play();
+                    return;
+                }
 
-                        interactable.BookInteract(EmptyLeftHand);
+                //we have the book in hand now
 
-                        rightHandAnim.SetBool("HasBook", true);
-                        EmptyRightHand = false;
-                        asPlayer.PlayOneShot(BookPickUp);
-                        return;
-                    }
+                else if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
+                {
+                    Debug.Log("Placing Book Down ");
+                    //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
 
-                    //we have the book in hand now
+                    //interactable.putBookDown(EmptyLeftHand);
 
-                    else if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
-                    {
-                        Debug.Log("Placing Book Down ");
-                        //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
-
-                        //interactable.putBookDown(EmptyLeftHand);
-
-                        rightHandAnim.SetTrigger("putBookDown");
-                        rightHandAnim.SetBool("HasBook", false);
-                        EmptyRightHand = true;
-                        Study();
-                        asPlayer.PlayOneShot(BookPutDown);
-                        return;
-
-                    }
-
-                    // if there is nothing to interact with then we do not do anything to it
-                    else if (interactable == null)
-                    {
-                        Debug.Log("not an interactable");
-                    }
+                    rightHandAnim.SetTrigger("putBookDown");
+                    rightHandAnim.SetBool("HasBook", false);
+                    EmptyRightHand = true;
+                    Study();
+                    asPlayer.Play();
+                    return;
 
                 }
+
+                // if there is nothing to interact with then we do not do anything to it
+                else if (interactable == null)
+                {
+                    Debug.Log("not an interactable");
+                }
+
             }
+        }
 
         //if there are no more questions from a book it needs to take the player out of the UI study screen
         if (StudyDone == true)
@@ -177,7 +174,7 @@ public class Player : MonoBehaviour
         //Left Hand Interactables!
         if (Input.GetMouseButtonDown(0) && canMove && !GameOver)
         {
-            asPlayer.PlayOneShot(Pick);
+            asPlayer.Play();
 
             leftHandAnim.SetTrigger("LeftHandPick");
 
@@ -195,9 +192,19 @@ public class Player : MonoBehaviour
                     interactable.ItemInteract(EmptyLeftHand);
                     EmptyLeftHand = false;
                     leftHandAnim.SetBool("HasTea", true);
-                    asPlayer.PlayOneShot(Pick);
-                    
-                    
+
+
+
+                }
+
+                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("HeadPhones"))
+                {
+                    interactable.ItemInteract(EmptyLeftHand);
+                    EmptyLeftHand = false;
+                    leftHandAnim.SetBool("HasTea", true);
+
+
+
                 }
 
             }
@@ -207,7 +214,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
         {
             AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
-            asPlayer.PlayOneShot(DrinkTea);
+            asPlayer.clip = DrinkTea;
+            asPlayer.Play();
             leftHandAnim.SetTrigger("DrinkTea");
             leftHandAnim.SetBool("HasTea", false);
             EmptyLeftHand = true;
@@ -220,7 +228,7 @@ public class Player : MonoBehaviour
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !GameOver)
         {
             moveDirection.y = jumpSpeed;
-            asPlayer.PlayOneShot(JumpSound, 1.0f);
+
         }
         else
         {
@@ -260,8 +268,8 @@ public class Player : MonoBehaviour
         {
 
 
-            CameraAnimator.SetTrigger("Death");
-            asPlayer.PlayOneShot(DeathSound, 1.0f);
+            
+
             canMove = false;
             GameOver = true;
             Debug.Log("GameOver, you lose!");

@@ -82,7 +82,7 @@ public class QuizManager : MonoBehaviour
 
 
         currentQuestions = Random.Range(0, QnA.Count);
-        Debug.Log(QnA.Count);
+        //Debug.Log(QnA.Count);
         
 
         Questiontxt.text = QnA[currentQuestions].Questions;
