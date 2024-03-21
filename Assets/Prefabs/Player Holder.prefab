@@ -504,6 +504,8 @@ MonoBehaviour:
   isCorrect: 0
   quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
+  fadeDuration: 1
+  displayDuration: 2
 --- !u!1 &492852799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1831,8 @@ MonoBehaviour:
   isCorrect: 0
   quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
+  fadeDuration: 1
+  displayDuration: 2
 --- !u!1 &1780867450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,6 +2191,8 @@ MonoBehaviour:
   isCorrect: 0
   quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
+  fadeDuration: 1
+  displayDuration: 2
 --- !u!1 &2082051336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,6 +2613,8 @@ MonoBehaviour:
   isCorrect: 0
   quizManager: {fileID: 203449518}
   CorrectText: {fileID: 1596288699}
+  fadeDuration: 1
+  displayDuration: 2
 --- !u!1 &3264869424312072573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,7 +2724,6 @@ GameObject:
   - component: {fileID: 3264869424548785545}
   - component: {fileID: 3264869424548785550}
   - component: {fileID: 3264869424548785551}
-  - component: {fileID: 3264869424548785544}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2790,27 +2797,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3264869424548785548}
   m_Enabled: 1
---- !u!95 &3264869424548785544
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3264869424548785548}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a70190f5326bc2d478a7a182927ed482, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3264869424930686796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3286,11 +3272,12 @@ MonoBehaviour:
   StudySound: {fileID: 8300000, guid: 92c2f3d30b2aeaf4eacc10aee5778ae6, type: 3}
   DrinkTea: {fileID: 0}
   heartbeatSound: {fileID: 0}
-  CameraAnimator: {fileID: 3264869424548785544}
+  CameraAnimator: {fileID: 0}
   BorderIdle: {fileID: 3264869425270125146}
   AnxityLvl: 0
   AnxityEffectValue: 2
   anxityChangeDuration: 0.25
+  Headphones: 0
   StudyDone: 0
   leftHandAnim: {fileID: 3264869424973656800}
   rightHandAnim: {fileID: 3264869424312072569}
