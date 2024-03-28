@@ -18,16 +18,16 @@ public class QuizManager : MonoBehaviour
     
 
     //reference to Player Variables
-    public Player Player;
+    public GameAddOns GameAddOns;
 
     private void Start()
     {
         generateQuestions();
 
-        
+
 
         //we get the player script from somewhere from the scene
-        Player = FindAnyObjectByType<Player>();
+        GameAddOns = FindAnyObjectByType<GameAddOns>();
 
     }
 
@@ -35,7 +35,8 @@ public class QuizManager : MonoBehaviour
     {
         if(CorrectAnswerIndex >= 4)
         {
-            Player.StudyDone = true;
+            GameAddOns.StudyDone = true;
+            GameAddOns.StudyScreen.SetActive(false);
             CorrectAnswerIndex = CorrectAnswerIndex - 4;
         }
     }
@@ -74,7 +75,7 @@ public class QuizManager : MonoBehaviour
         if (QnA.Count == 0)
         {
             //Player.StudyScreen.SetActive(false);
-            Player.StudyDone = true;
+            GameAddOns.StudyDone = true;
             Questiontxt.text = null;
             
         }
