@@ -6,10 +6,16 @@ public class SoundArea : MonoBehaviour
 {
     private AudioSource audioSource;
     public float soundRange = 20f;
+    private AnxityMeter anxityMeter;
     // Start is called before the first frame update
     void Start()
     {
         audioSource= GetComponent<AudioSource>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            anxityMeter = player.GetComponent<AnxityMeter>();
+        }
     }
 
     // Update is called once per frame
@@ -38,5 +44,27 @@ public class SoundArea : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
         return distanceToPlayer <= soundRange;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (anxityMeter != null)
+            {
+                anxityMeter.Anxietyscore += 1f;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (anxityMeter != null)
+            {
+                anxityMeter.Anxietyscore -= 1f;
+            }
+        }
     }
 }
