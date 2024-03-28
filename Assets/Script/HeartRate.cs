@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HearBeatScript : MonoBehaviour
+public class HeartRate : MonoBehaviour
 {
     private AudioSource heartbeatAudioSource;
     public AudioClip heartbeatSound;
@@ -19,8 +19,6 @@ public class HearBeatScript : MonoBehaviour
         heartbeatAudioSource.clip = heartbeatSound;
         heartbeatAudioSource.loop = true;
         heartbeatAudioSource.playOnAwake = false;
-
-        
     }
 
     // Update is called once per frame
@@ -28,8 +26,6 @@ public class HearBeatScript : MonoBehaviour
     {
         PlayHeartbeat();
     }
-
-
     public void PlayHeartbeat()
     {
         if (AnxityMeter.Anxietyscore < 30)
@@ -50,7 +46,7 @@ public class HearBeatScript : MonoBehaviour
 
         if (!heartbeatAudioSource.isPlaying)
         {
-            
+
 
             heartbeatAudioSource.Play();
         }
@@ -63,4 +59,5 @@ public class HearBeatScript : MonoBehaviour
             heartbeatAudioSource.Stop();
         }
     }
+
 }
