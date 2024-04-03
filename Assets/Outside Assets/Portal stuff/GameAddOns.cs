@@ -243,8 +243,7 @@ public class GameAddOns : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
         {
             AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
-            asPlayer.clip = DrinkTea;
-            asPlayer.Play();
+            TeaSound.Instance.PlayTeaDrinkingSound(); //James make an change this line. 
             leftHandAnim.SetTrigger("DrinkTea");
             leftHandAnim.SetBool("HasTea", false);
             EmptyLeftHand = true;
