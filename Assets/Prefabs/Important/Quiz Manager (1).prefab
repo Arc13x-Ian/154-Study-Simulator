@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1516770488554490128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516770488554490134}
+  - component: {fileID: 1516770488554490135}
+  m_Layer: 0
+  m_Name: Quiz Manager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516770488554490134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516770488554490128}
+  m_LocalRotation: {x: -0, y: 0.00059790286, z: -0, w: 0.9999998}
+  m_LocalPosition: {x: 111.5, y: 1.32, z: 107.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1516770488554490135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516770488554490128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcd6e6a3c235c34f87c04dada80c73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QnA:
+  - Questions: What is  5 + 3 ?
+    Answers:
+    - 7
+    - 8
+    - 9
+    - 10
+    CorrectAnswer: 2
+  - Questions: If you have 2 apples and you get 3 more, how many apples do you have?
+    Answers:
+    - 3
+    - 4
+    - 5
+    - 6
+    CorrectAnswer: 3
+  - Questions: "What is  2 \xD7 4 ?"
+    Answers:
+    - 6
+    - 8
+    - 10
+    - 12
+    CorrectAnswer: 2
+  - Questions: if x + 2 = 7, what is the value of x?
+    Answers:
+    - 3
+    - 4
+    - 5
+    - 6
+    CorrectAnswer: 1
+  - Questions: Who was the first President of the United States?
+    Answers:
+    - Thomas Jefferson
+    - George Washington
+    - Abraham Lincoln
+    - John Adams
+    CorrectAnswer: 2
+  - Questions: In which year did Christopher Columbus first reach the Americas?
+    Answers:
+    - 1400
+    - 1492
+    - 1607
+    - 1776
+    CorrectAnswer: 2
+  - Questions: Which ancient civilization built the pyramids in Egypt?
+    Answers:
+    - Roman
+    - Greek
+    - Egyptian
+    - Mesopotamian
+    CorrectAnswer: 3
+  - Questions: During which war did the Battle of Gettysburg take place?
+    Answers:
+    - World War I
+    - American Civil War
+    - Revolutionary War
+    - World War II
+    CorrectAnswer: 2
+  - Questions: Which of the following is a mammal?
+    Answers:
+    - Snake
+    - Fish
+    - Dog
+    - Spider
+    CorrectAnswer: 3
+  - Questions: What is the process by which plants make their own food using sunlight?
+    Answers:
+    - Respiration
+    - Photosynthesis
+    - Digestion
+    - Fermentation
+    CorrectAnswer: 2
+  - Questions: Which planet is known as the "Red Planet"?
+    Answers:
+    - Venus
+    - Mars
+    - Jupiter
+    - Saturn
+    CorrectAnswer: 2
+  - Questions: What is the smallest unit of matter?
+    Answers:
+    - Atom
+    - Molecule
+    - Cell
+    - Particle
+    CorrectAnswer: 1
+  - Questions: Which of the following is a pronoun?
+    Answers:
+    - House
+    - Run
+    - He
+    - Blue
+    CorrectAnswer: 3
+  - Questions: What is the past tense of the verb "sing"?
+    Answers:
+    - Sang
+    - Sings
+    - Singing
+    - Sung
+    CorrectAnswer: 1
+  - Questions: Which word is a synonym for "happy"?
+    Answers:
+    - Sad
+    - Angry
+    - Joyful
+    - Tired
+    CorrectAnswer: 3
+  - Questions: What is the plural form of "child"?
+    Answers:
+    - Childrens
+    - Childs
+    - Childen
+    - Children
+    CorrectAnswer: 4
+  options:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentQuestions: 0
+  CorrectAnswerIndex: 12
+  Questiontxt: {fileID: 0}
+  GameAddOns: {fileID: 0}

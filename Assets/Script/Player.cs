@@ -67,9 +67,12 @@ public class Player : MonoBehaviour
 
 
 
+
+
+
     void Start()
     {
-        
+
 
         characterController = GetComponent<CharacterController>();
         asPlayer = gameObject.AddComponent<AudioSource>();
@@ -107,59 +110,8 @@ public class Player : MonoBehaviour
 
         bool isWalking = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
 
+        InteractionsIF();
 
-        //  EVERYTHING THAT WILL BE INTERACTABLE
-        if (Input.GetMouseButtonDown(1) && canMove && !GameOver)
-        {
-            rightHandAnim.SetTrigger("rightHandPick");
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Check if the hit object has an interactable component
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-
-                //I pick up the book
-
-                if (interactable != null && EmptyRightHand == true && interactable.CompareTag("Book"))
-                {
-                    // Call the interaction method on the interactable object
-
-                    interactable.BookInteract(EmptyLeftHand);
-
-                    rightHandAnim.SetBool("HasBook", true);
-                    EmptyRightHand = false;
-                    asPlayer.Play();
-                    return;
-                }
-
-                //we have the book in hand now
-
-                else if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
-                {
-                    Debug.Log("Placing Book Down ");
-                    //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
-
-                    //interactable.putBookDown(EmptyLeftHand);
-
-                    rightHandAnim.SetTrigger("putBookDown");
-                    rightHandAnim.SetBool("HasBook", false);
-                    EmptyRightHand = true;
-                    Study();
-                    asPlayer.Play();
-                    return;
-
-                }
-
-                // if there is nothing to interact with then we do not do anything to it
-                else if (interactable == null)
-                {
-                    Debug.Log("not an interactable");
-                }
-
-            }
-        }
 
         //if there are no more questions from a book it needs to take the player out of the UI study screen
         if (StudyDone == true)
@@ -171,55 +123,9 @@ public class Player : MonoBehaviour
         }
 
 
-        //Left Hand Interactables!
-        if (Input.GetMouseButtonDown(0) && canMove && !GameOver)
-        {
-            asPlayer.Play();
+        
 
-            leftHandAnim.SetTrigger("LeftHandPick");
-
-            
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Check if the hit object has an interactable component
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-
-                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("Tea"))
-                {
-                    interactable.ItemInteract(EmptyLeftHand);
-                    EmptyLeftHand = false;
-                    leftHandAnim.SetBool("HasTea", true);
-
-
-
-                }
-
-                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("HeadPhones"))
-                {
-                    interactable.ItemInteract(EmptyLeftHand);
-                    EmptyLeftHand = false;
-                    leftHandAnim.SetBool("HasTea", true);
-
-
-
-                }
-
-            }
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
-        {
-            AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
-            asPlayer.clip = DrinkTea;
-            asPlayer.Play();
-            leftHandAnim.SetTrigger("DrinkTea");
-            leftHandAnim.SetBool("HasTea", false);
-            EmptyLeftHand = true;
-        }
+       
 
 
 
@@ -323,6 +229,116 @@ public class Player : MonoBehaviour
         Cursor.visible = true;
 
     }
+
+    private void InteractionsIF()
+    {
+        //  EVERYTHING THAT WILL BE INTERACTABLE
+        if (Input.GetMouseButtonDown(1) && canMove && !GameOver)
+        {
+            rightHandAnim.SetTrigger("rightHandPick");
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Check if the hit object has an interactable component
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                //I pick up the book
+
+                if (interactable != null && EmptyRightHand == true && interactable.CompareTag("Book"))
+                {
+                    // Call the interaction method on the interactable object
+
+                    interactable.BookInteract(EmptyLeftHand);
+
+                    rightHandAnim.SetBool("HasBook", true);
+                    EmptyRightHand = false;
+                    asPlayer.Play();
+                    return;
+                }
+
+                //we have the book in hand now
+
+                else if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
+                {
+                    Debug.Log("Placing Book Down ");
+                    //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
+
+                    //interactable.putBookDown(EmptyLeftHand);
+
+                    rightHandAnim.SetTrigger("putBookDown");
+                    rightHandAnim.SetBool("HasBook", false);
+                    EmptyRightHand = true;
+                    Study();
+                    asPlayer.Play();
+                    return;
+
+                }
+
+                // if there is nothing to interact with then we do not do anything to it
+                else if (interactable == null)
+                {
+                    Debug.Log("not an interactable");
+                }
+
+            }
+        }
+
+        //Left Hand Interactables!
+        if (Input.GetMouseButtonDown(0) && canMove && !GameOver)
+        {
+            asPlayer.Play();
+
+            leftHandAnim.SetTrigger("LeftHandPick");
+
+
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Check if the hit object has an interactable component
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("Tea"))
+                {
+                    interactable.ItemInteract(EmptyLeftHand);
+                    EmptyLeftHand = false;
+                    leftHandAnim.SetBool("HasTea", true);
+
+
+
+                }
+
+                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("HeadPhones"))
+                {
+                    interactable.ItemInteract(EmptyLeftHand);
+                    EmptyLeftHand = false;
+                    leftHandAnim.SetBool("HasTea", true);
+
+
+
+                }
+
+            }
+
+        }
+
+
+        //drinking tea function
+        if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
+        {
+            AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
+            asPlayer.clip = DrinkTea;
+            asPlayer.Play();
+            leftHandAnim.SetTrigger("DrinkTea");
+            leftHandAnim.SetBool("HasTea", false);
+            EmptyLeftHand = true;
+        }
+    }
+
+
 
 
 }

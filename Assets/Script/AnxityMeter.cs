@@ -18,7 +18,7 @@ public class AnxityMeter : MonoBehaviour
     public TextMeshProUGUI MinTimer;
     public TextMeshProUGUI SecTimer;
 
-    public Player Player;
+    public GameAddOns Player;
 
     public int seconds = 0;
     public int min = 0;
@@ -35,7 +35,7 @@ public class AnxityMeter : MonoBehaviour
 
 
         //we get the player script from somewhere from the scene
-        Player = FindAnyObjectByType<Player>();
+        Player = FindAnyObjectByType<GameAddOns>();
 
     }
 
