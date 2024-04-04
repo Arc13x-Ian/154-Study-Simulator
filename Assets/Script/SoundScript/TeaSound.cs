@@ -14,10 +14,6 @@ public class TeaSound : MonoBehaviour
         {
             Instance = this;
             audioSource = GetComponent<AudioSource>();
-            if (audioSource == null)
-            {
-                Debug.LogError("AudioSource component not found on the Player!");
-            }
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -28,17 +24,9 @@ public class TeaSound : MonoBehaviour
 
     public void PlayTeaDrinkingSound()
     {
-        if (drinkTeaSound == null)
+        if (drinkTeaSound != null)
         {
-            Debug.LogError("DrinkTeaSound AudioClip is not assigned on TeaSound script!");
-            return;
+            audioSource.PlayOneShot(drinkTeaSound);
         }
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource is not set or found on TeaSound script!");
-            return;
-        }
-
-        audioSource.PlayOneShot(drinkTeaSound);
     }
 }
