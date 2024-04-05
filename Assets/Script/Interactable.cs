@@ -38,11 +38,11 @@ public class Interactable : MonoBehaviour
             if (audioSource != null && PickupSound != null)
             {
                 audioSource.PlayOneShot(PickupSound);
-                Destroy(gameObject, PickupSound.length);
+                //Destroy(gameObject, PickupSound.length);
             }
             else
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
 
