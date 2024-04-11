@@ -58,6 +58,7 @@ public class teleporterScript : MonoBehaviour
             Snackerman.MovePosition(teleportPoints[index].transform.position);
             index++;
             Debug.Log("I have attempted to teleport!");
+            //Add audio file playing SHOOOOOOP noise
 
             yield return new WaitForSeconds(5);
         }

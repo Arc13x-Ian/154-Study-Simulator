@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-
+    public GameObject prefabToSpawn;
+    public Vector3 spawnPosition;
+    public Quaternion spawnRotation;
 
     public AudioClip PickupSound;
     private AudioSource audioSource;
@@ -35,14 +37,12 @@ public class Interactable : MonoBehaviour
     {
         if (gameObject.tag == "Tea" && EmptyHand == true)
         {
+            Instantiate(prefabToSpawn, spawnPosition, spawnRotation);
+            Destroy(gameObject);
+
             if (audioSource != null && PickupSound != null)
             {
                 audioSource.PlayOneShot(PickupSound);
-                Destroy(gameObject, PickupSound.length);
-            }
-            else
-            {
-                Destroy(gameObject);
             }
         }
 

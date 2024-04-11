@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Stressors.meta
 guid: fef31bb3e6bd6e04b90eb4df7c8f29b9
 folderAsset: yes
+========
+guid: 690fd90c6ae3aff49a905e70ee27c840
+>>>>>>>> 93dc73d988242d7f2371aa38da81b808f0d03ba6:Assets/Scenes/Testing Scenes/GameplayLayoutTest.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

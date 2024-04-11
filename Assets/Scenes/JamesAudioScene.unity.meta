@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Testing Scenes/GameplayLayoutTest.unity.meta
+guid: 1746711527e090f4f98b4e9ceacdc8d9
+========
 guid: 638b59e5b60e424469046fba1524782d
+>>>>>>>> 93dc73d988242d7f2371aa38da81b808f0d03ba6:Assets/Scenes/JamesAudioScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

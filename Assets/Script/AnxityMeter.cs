@@ -56,6 +56,7 @@ public class AnxityMeter : MonoBehaviour
             //end game
             Player.GameOver = true;
             Player.canMove = false;
+            SceneManager.LoadScene("GameOverScreen");
 
         }
 
@@ -71,6 +72,10 @@ public class AnxityMeter : MonoBehaviour
 
         }
         //Increase the score by 0.1 points
+        else if (Player.Headphones)
+        {
+            return;
+        }
         else
         {
             Anxietyscore += 0.1f;
