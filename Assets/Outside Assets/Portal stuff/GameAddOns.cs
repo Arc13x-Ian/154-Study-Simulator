@@ -80,7 +80,8 @@ public class GameAddOns : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene("GameOverScreen");
+            Destroy(gameObject);
+            //SceneManager.LoadScene("GameOverScreen");
             FPSController.walkSpeed = 0.001f;
             FPSController.runSpeed = 0.0001f;
         }
@@ -229,7 +230,7 @@ public class GameAddOns : MonoBehaviour
                     interactable.ItemInteract(EmptyLeftHand);
                     EmptyLeftHand = false;
                     leftHandAnim.SetBool("HasHeadPhones", true);
-
+                    
 
 
                 }
@@ -252,8 +253,16 @@ public class GameAddOns : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasHeadPhones"))
         {
             //set function to block the flow of Anxity for a set amout of time WIP
+            StartCoroutine(Deaf());
+            Headphones = false;
         }
 
+    }
+
+    private IEnumerator Deaf()
+    {
+        Headphones = true;
+        yield return new WaitForSeconds(HeadPhoneDuration);
     }
 
 }
