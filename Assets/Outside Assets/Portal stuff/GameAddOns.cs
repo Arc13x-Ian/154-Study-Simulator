@@ -216,10 +216,10 @@ public class GameAddOns : MonoBehaviour
 
                 if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("Tea"))
                 {
+                    Debug.Log("got tea");
                     interactable.ItemInteract(EmptyLeftHand);
-                    EmptyLeftHand = false;
                     leftHandAnim.SetBool("HasTea", true);
-
+                    EmptyLeftHand = false;
 
 
                 }
@@ -228,7 +228,7 @@ public class GameAddOns : MonoBehaviour
                 {
                     interactable.ItemInteract(EmptyLeftHand);
                     EmptyLeftHand = false;
-                    leftHandAnim.SetBool("HasTea", true);
+                    leftHandAnim.SetBool("HasHeadPhones", true);
 
 
 
@@ -248,6 +248,12 @@ public class GameAddOns : MonoBehaviour
             leftHandAnim.SetBool("HasTea", false);
             EmptyLeftHand = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasHeadPhones"))
+        {
+            //set function to block the flow of Anxity for a set amout of time WIP
+        }
+
     }
 
 }
