@@ -61,9 +61,9 @@ public class Player : MonoBehaviour
     public Animator rightHandAnim;
     public bool EmptyLeftHand;
     public bool EmptyRightHand;
-    public GameObject StudyScreen;
-    public QuizManager QuizManager;
-    public AnxityMeter AnxityMeter;
+    //public GameObject StudyScreen;
+    //public QuizManager QuizManager;
+    //public AnxityMeter AnxityMeter;
 
 
 
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         asPlayer = gameObject.AddComponent<AudioSource>();
-        AnxityMeter = FindAnyObjectByType<AnxityMeter>();
+        //AnxityMeter = FindAnyObjectByType<AnxityMeter>();
 
         asPlayer.clip = Pick;
 
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         EmptyRightHand = true;
 
         StudyDone = true;
-        StudyScreen.SetActive(false);
+        //StudyScreen.SetActive(false);
 
     }
 
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
         if (StudyDone == true)
         {
             asPlayer.Stop();
-            StudyScreen.SetActive(false);
+            //StudyScreen.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -187,13 +187,14 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Stress Aura"))
         {
 
-            StartCoroutine(StressCollide());
+            //StartCoroutine(StressCollide());
         }
     }
 
+    /*
     IEnumerator StressCollide()
     {
-
+        
         if (AnxityMeter.Anxietyscore <= 100)
         {
 
@@ -204,6 +205,7 @@ public class Player : MonoBehaviour
 
 
     }
+    */
 
     public void AnxityChangeRate(bool Action, float AnxityEffect)
     {
@@ -224,7 +226,7 @@ public class Player : MonoBehaviour
     {
         asPlayer.PlayOneShot(StudySound);
         StudyDone = false;
-        StudyScreen.SetActive(true);
+        //StudyScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
@@ -329,7 +331,7 @@ public class Player : MonoBehaviour
         //drinking tea function
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
         {
-            AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
+            //AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
             asPlayer.clip = DrinkTea;
             asPlayer.Play();
             leftHandAnim.SetTrigger("DrinkTea");
