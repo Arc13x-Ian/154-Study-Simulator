@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameAddOns : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class GameAddOns : MonoBehaviour
     public GameObject StudyScreen;
     public QuizManager QuizManager;
     public AnxityMeter AnxityMeter;
+
+    //      Post Processing 
+    public PostProcessVolume m_Volume;
+    private Vignette m_Vignette;
 
 
     // Start is called before the first frame update
