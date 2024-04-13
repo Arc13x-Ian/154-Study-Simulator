@@ -49,10 +49,6 @@ public class GameAddOns : MonoBehaviour
     public QuizManager QuizManager;
     public AnxityMeter AnxityMeter;
 
-    //      Post Processing 
-    public PostProcessVolume m_Volume;
-    private Vignette m_Vignette;
-
 
     // Start is called before the first frame update
     void Start()

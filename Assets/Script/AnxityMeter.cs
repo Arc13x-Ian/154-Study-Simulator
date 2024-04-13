@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.Rendering.PostProcessing;
 
 public class AnxityMeter : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class AnxityMeter : MonoBehaviour
     public int min = 0;
     Coroutine Timerate;
 
+    public PPtesting PostProcessEffect;
+
     void Start()
     {
         // Invoke the function to increase score every 1 second (change the second parameter as needed)
@@ -37,15 +40,39 @@ public class AnxityMeter : MonoBehaviour
         //we get the player script from somewhere from the scene
         Player = FindAnyObjectByType<GameAddOns>();
 
+        //finds Our Post Processing Volume
+        PostProcessEffect = FindAnyObjectByType<PPtesting>();
+
     }
 
     void Update()
     {
+
         anxityScore.text = Anxietyscore.ToString("0.0");
         if (Anxietyscore < 0f)
         {
             Anxietyscore = 0;
+
         }
+
+
+        if (Anxietyscore > 30)
+        {
+            PostProcessEffect.frequency = 6f;
+            PostProcessEffect.maxIntensity = 0.79f;
+        }
+        if (Anxietyscore > 60)
+        {
+            PostProcessEffect.frequency = 6.5f;
+            PostProcessEffect.maxIntensity = 0.82f;
+        }
+        if(Anxietyscore > 90)
+        {
+            PostProcessEffect.frequency = 7f;
+            PostProcessEffect.maxIntensity = 0.9f;
+        }
+
+
         if (Anxietyscore > 100f)
         {
             Anxietyscore = 100f;
