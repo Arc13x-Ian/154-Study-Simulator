@@ -30,7 +30,7 @@ public class AnxityMeter : MonoBehaviour
     void Start()
     {
         // Invoke the function to increase score every 1 second (change the second parameter as needed)
-        InvokeRepeating("IncreaseScore", 0f, 1f);
+        StartCoroutine(IncreaseScore());
 
 
         //coroutine
@@ -90,25 +90,34 @@ public class AnxityMeter : MonoBehaviour
 
     }
 
-    void IncreaseScore()
+    private IEnumerator IncreaseScore()
     {
-        // Increase the score by 0.2 points while sprinting
-        if (Input.GetKey(KeyCode.LeftShift))
+        while (Anxietyscore < 100.1f)
         {
-            Anxietyscore += 0.2f;
+            float Index = 0.1f;
 
-        }
-        //Increase the score by 0.1 points
-        else if (Player.Headphones)
-        {
-            return;
-        }
-        else
-        {
-            Anxietyscore += 0.1f;
+            // Increase the score by 0.2 points while sprinting
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                Index = 0.2f;
 
+            }
+            //Increase the score by 0.1 points
+
+            if (Player.Headphones)
+            {
+                Index = 0f;
+                yield return new WaitForSeconds(5);
+            }
+            else if (!Player.Headphones)
+            {
+                Anxietyscore += Index;
+                yield return new WaitForSeconds(1);
+
+            }
+            //Debug.Log("Current Score: " + score);
         }
-        //Debug.Log("Current Score: " + score);
+
     }
     public void ModifyAnxiety(float amount)
     {

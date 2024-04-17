@@ -34,7 +34,7 @@ public class GameAddOns : MonoBehaviour
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity effect change
     public bool Headphones = false; // a bool to turn off and on when the player has the headphones on
-    private float HeadPhoneDuration = 5.0f;
+    private float HeadPhoneDuration = 4.0f;
 
     //      Tester bools for Methods
     private bool inRadius;
@@ -67,7 +67,6 @@ public class GameAddOns : MonoBehaviour
         //sets the hands empty at the start
         EmptyLeftHand = true;
         EmptyRightHand = true;
-
         StudyDone = true;
         StudyScreen.SetActive(false);
         
@@ -229,9 +228,9 @@ public class GameAddOns : MonoBehaviour
                 if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("HeadPhones"))
                 {
                     interactable.ItemInteract(EmptyLeftHand);
-                    EmptyLeftHand = false;
                     leftHandAnim.SetBool("HasHeadPhones", true);
-                    
+                    EmptyLeftHand = false;
+                    //Debug.Log(interactable + " has been interacted with");
 
 
                 }
@@ -244,26 +243,40 @@ public class GameAddOns : MonoBehaviour
         //drinking tea function
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
         {
+            Debug.Log("tea was drank");
             AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
-            TeaSound.Instance.PlayTeaDrinkingSound(); //James Edit this
-            leftHandAnim.SetTrigger("DrinkTea");
             leftHandAnim.SetBool("HasTea", false);
+            leftHandAnim.SetTrigger("DrinkTea");
+            TeaSound.Instance.PlayTeaDrinkingSound(); //James Edit this
             EmptyLeftHand = true;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasHeadPhones"))
         {
-            //set function to block the flow of Anxity for a set amout of time WIP
+
+            Headphones = true;
             StartCoroutine(Deaf());
-            Headphones = false;
+        }
+        else
+        {
+            //Headphones = false;
         }
 
     }
 
     private IEnumerator Deaf()
     {
-        Headphones = true;
-        yield return new WaitForSeconds(HeadPhoneDuration);
+        leftHandAnim.SetTrigger("UseHeadPhones");
+        leftHandAnim.SetBool("HasHeadPhones", false);
+        EmptyLeftHand = true;
+        for (int i = 0; i < 6; i++)
+        {
+            if(i == HeadPhoneDuration)
+            {
+                Headphones = false;
+            }
+            yield return new WaitForSeconds(1);
+        }
     }
 
 }
