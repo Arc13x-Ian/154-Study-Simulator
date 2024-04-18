@@ -11,6 +11,7 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestions;
     public int CorrectAnswerIndex = 0;
+    private int SCORE = 0;
 
 
     public TextMeshProUGUI Questiontxt;
@@ -33,11 +34,23 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
-        if(CorrectAnswerIndex >= 4)
+        if (GameAddOns.StudyDone == false)
+        {
+            if (CorrectAnswerIndex == 4)
+            {
+                GameAddOns.StudyDone = true;
+                GameAddOns.StudyScreen.SetActive(false);
+                CorrectAnswerIndex = 0;
+                ++SCORE;
+
+            }
+        }
+
+        if (SCORE >= 4)
         {
             GameAddOns.StudyDone = true;
             GameAddOns.StudyScreen.SetActive(false);
-            CorrectAnswerIndex = CorrectAnswerIndex - 4;
+            SceneManager.LoadScene("GameWinScreen");
         }
     }
 

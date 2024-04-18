@@ -747,9 +747,9 @@ RectTransform:
   - {fileID: 6888757847276508612}
   - {fileID: 6888757848764020871}
   - {fileID: 6888757849105247672}
-  - {fileID: 6888757847798224689}
   - {fileID: 6888757848844567652}
   - {fileID: 6888757848617782137}
+  - {fileID: 6888757847798224689}
   - {fileID: 4839698898114335842}
   - {fileID: 1516770489816714102}
   m_Father: {fileID: 0}
@@ -998,7 +998,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6888757847798224700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1011,12 +1011,12 @@ RectTransform:
   - {fileID: 6888757848911863603}
   - {fileID: 6888757848308662529}
   m_Father: {fileID: 6888757847703816961}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_SizeDelta: {x: 0.00012207031, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6888757847798224702
 CanvasRenderer:
@@ -1814,7 +1814,7 @@ RectTransform:
   - {fileID: 6888757848061320755}
   - {fileID: 6888757847145950876}
   m_Father: {fileID: 6888757847703816961}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.091000006}
   m_AnchorMax: {x: 1, y: 0.16362162}
@@ -1851,8 +1851,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: :Time
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2048,7 +2048,7 @@ RectTransform:
   m_Children:
   - {fileID: 6888757848190342639}
   m_Father: {fileID: 6888757847703816961}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.09768919}
   m_AnchorMax: {x: 0.5, y: 0.16362162}
@@ -2085,8 +2085,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Anxiety Level:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -46,10 +46,10 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        if (gameObject.tag == "headPhones")
+        else if (gameObject.tag == "HeadPhones" && EmptyHand)
         {
             Destroy(gameObject);
-            audioSource.PlayOneShot(PickupSound);
+            //Debug.Log(gameObject + "is destroyed");
         }
 
     }

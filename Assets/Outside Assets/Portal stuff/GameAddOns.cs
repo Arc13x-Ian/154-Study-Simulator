@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameAddOns : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class GameAddOns : MonoBehaviour
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity effect change
     public bool Headphones = false; // a bool to turn off and on when the player has the headphones on
-    private float HeadPhoneDuration = 5.0f;
+    private float HeadPhoneDuration = 4.0f;
 
     //      Tester bools for Methods
     private bool inRadius;
@@ -66,7 +67,6 @@ public class GameAddOns : MonoBehaviour
         //sets the hands empty at the start
         EmptyLeftHand = true;
         EmptyRightHand = true;
-
         StudyDone = true;
         StudyScreen.SetActive(false);
         
@@ -75,6 +75,12 @@ public class GameAddOns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Study();
+        }
+
+
         //Gameover Logic
         if (GameOver)
         {
@@ -114,7 +120,7 @@ public class GameAddOns : MonoBehaviour
         if (AnxityMeter.Anxietyscore <= 100)
         {
             AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore + 0.1f;
-            Debug.Log("Stress at " + AnxityMeter.Anxietyscore);
+            //Debug.Log("Stress at " + AnxityMeter.Anxietyscore);
             yield return new WaitForSeconds(10);
         }
 
@@ -136,6 +142,7 @@ public class GameAddOns : MonoBehaviour
 
     private void Study()
     {
+        Debug.Log("Study Atempt");
         asPlayer.PlayOneShot(StudySound);
         StudyDone = false;
         StudyScreen.SetActive(true);
@@ -168,13 +175,14 @@ public class GameAddOns : MonoBehaviour
 
                     rightHandAnim.SetBool("HasBook", true);
                     EmptyRightHand = false;
+                    StudyDone = false;
                     asPlayer.Play();
                     return;
                 }
 
                 //we have the book in hand now
 
-                else if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
+                if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
                 {
                     Debug.Log("Placing Book Down ");
                     //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
@@ -183,17 +191,11 @@ public class GameAddOns : MonoBehaviour
 
                     rightHandAnim.SetTrigger("putBookDown");
                     rightHandAnim.SetBool("HasBook", false);
-                    EmptyRightHand = true;
                     Study();
                     asPlayer.Play();
+                    EmptyRightHand = true;
                     return;
 
-                }
-
-                // if there is nothing to interact with then we do not do anything to it
-                else if (interactable == null)
-                {
-                    Debug.Log("not an interactable");
                 }
 
             }
@@ -228,9 +230,9 @@ public class GameAddOns : MonoBehaviour
                 if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("HeadPhones"))
                 {
                     interactable.ItemInteract(EmptyLeftHand);
-                    EmptyLeftHand = false;
                     leftHandAnim.SetBool("HasHeadPhones", true);
-                    
+                    EmptyLeftHand = false;
+                    //Debug.Log(interactable + " has been interacted with");
 
 
                 }
@@ -243,26 +245,40 @@ public class GameAddOns : MonoBehaviour
         //drinking tea function
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasTea"))
         {
+            Debug.Log("tea was drank");
             AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore - AnxityMeter.TeaRestore;
-            TeaSound.Instance.PlayTeaDrinkingSound(); //James Edit this
-            leftHandAnim.SetTrigger("DrinkTea");
             leftHandAnim.SetBool("HasTea", false);
+            leftHandAnim.SetTrigger("DrinkTea");
+            TeaSound.Instance.PlayTeaDrinkingSound(); //James Edit this
             EmptyLeftHand = true;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasHeadPhones"))
         {
-            //set function to block the flow of Anxity for a set amout of time WIP
+
+            Headphones = true;
             StartCoroutine(Deaf());
-            Headphones = false;
+        }
+        else
+        {
+            //Headphones = false;
         }
 
     }
 
     private IEnumerator Deaf()
     {
-        Headphones = true;
-        yield return new WaitForSeconds(HeadPhoneDuration);
+        leftHandAnim.SetTrigger("UseHeadPhones");
+        leftHandAnim.SetBool("HasHeadPhones", false);
+        EmptyLeftHand = true;
+        for (int i = 0; i < 6; i++)
+        {
+            if(i == HeadPhoneDuration)
+            {
+                Headphones = false;
+            }
+            yield return new WaitForSeconds(1);
+        }
     }
 
 }
