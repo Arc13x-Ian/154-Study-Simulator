@@ -49,7 +49,7 @@ public class Interactable : MonoBehaviour
         else if (gameObject.tag == "HeadPhones" && EmptyHand)
         {
             Destroy(gameObject);
-            Debug.Log(gameObject + "is destroyed");
+            //Debug.Log(gameObject + "is destroyed");
         }
 
     }
