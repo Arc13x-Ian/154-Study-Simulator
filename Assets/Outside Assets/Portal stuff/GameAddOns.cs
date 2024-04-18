@@ -175,6 +175,7 @@ public class GameAddOns : MonoBehaviour
 
                     rightHandAnim.SetBool("HasBook", true);
                     EmptyRightHand = false;
+                    StudyDone = false;
                     asPlayer.Play();
                     return;
                 }
