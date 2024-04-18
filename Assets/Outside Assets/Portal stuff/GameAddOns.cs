@@ -75,6 +75,12 @@ public class GameAddOns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Study();
+        }
+
+
         //Gameover Logic
         if (GameOver)
         {
@@ -114,7 +120,7 @@ public class GameAddOns : MonoBehaviour
         if (AnxityMeter.Anxietyscore <= 100)
         {
             AnxityMeter.Anxietyscore = AnxityMeter.Anxietyscore + 0.1f;
-            Debug.Log("Stress at " + AnxityMeter.Anxietyscore);
+            //Debug.Log("Stress at " + AnxityMeter.Anxietyscore);
             yield return new WaitForSeconds(10);
         }
 
@@ -136,6 +142,7 @@ public class GameAddOns : MonoBehaviour
 
     private void Study()
     {
+        Debug.Log("Study Atempt");
         asPlayer.PlayOneShot(StudySound);
         StudyDone = false;
         StudyScreen.SetActive(true);
@@ -174,7 +181,7 @@ public class GameAddOns : MonoBehaviour
 
                 //we have the book in hand now
 
-                else if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
+                if (interactable != null && EmptyRightHand == false && interactable.CompareTag("Study Spot"))
                 {
                     Debug.Log("Placing Book Down ");
                     //call this for when we are at the Study table to Spawn the Book on the table as well as to possibly move the character into study position
@@ -183,17 +190,11 @@ public class GameAddOns : MonoBehaviour
 
                     rightHandAnim.SetTrigger("putBookDown");
                     rightHandAnim.SetBool("HasBook", false);
-                    EmptyRightHand = true;
                     Study();
                     asPlayer.Play();
+                    EmptyRightHand = true;
                     return;
 
-                }
-
-                // if there is nothing to interact with then we do not do anything to it
-                else if (interactable == null)
-                {
-                    Debug.Log("not an interactable");
                 }
 
             }

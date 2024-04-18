@@ -33,11 +33,18 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
-        if(CorrectAnswerIndex >= 4)
+        if(CorrectAnswerIndex % 4 == 0)
         {
             GameAddOns.StudyDone = true;
             GameAddOns.StudyScreen.SetActive(false);
-            CorrectAnswerIndex = CorrectAnswerIndex - 4;
+            
+        }
+
+        if (CorrectAnswerIndex >= 16)
+        {
+            GameAddOns.StudyDone = true;
+            GameAddOns.StudyScreen.SetActive(false);
+            SceneManager.LoadScene("GameWinScreen");
         }
     }
 
