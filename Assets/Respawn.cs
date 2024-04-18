@@ -18,7 +18,7 @@ public class Respawn : MonoBehaviour
 
             // Teleport the player to the respawn spot
             player.transform.position = new Vector3(respawnSpot.position.x, respawnSpot.position.y, respawnSpot.position.z);
-            Debug.Log("Player respawned at " + respawnSpot.name);
+            Debug.Log("Player respawned at x:" + respawnSpot.position.x + " y:" + respawnSpot.position.y + " z" + respawnSpot.position.z);
         
     }
 }
