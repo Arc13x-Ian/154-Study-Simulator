@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1244713428653113644
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 854909824883065887}
+    m_Modifications:
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536924894871492235, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146635848073192305, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_Name
+      value: Level Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238891312865689551, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c4849307ba5161f478b7ee989c4bfed2, type: 3}
 --- !u!1001 &1858172753415361103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1858172752825808261, guid: 293cd9b9d1bd6e54d9f685fa0198d76a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1858172752825808261, guid: 293cd9b9d1bd6e54d9f685fa0198d76a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -246,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6888757847703816974, guid: 226ebe9d19a8f794ba9730dde501e072, type: 3}
       propertyPath: m_Name
-      value: '*Managers/UI'
+      value: _Managers_UI Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6888757848617782136, guid: 226ebe9d19a8f794ba9730dde501e072, type: 3}
       propertyPath: m_fontAsset

@@ -83,7 +83,9 @@ public class AnxityMeter : MonoBehaviour
             //end game
             Player.GameOver = true;
             Player.canMove = false;
-            SceneManager.LoadScene("GameOverScreen");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //SceneManager.LoadScene("GameOverScreen");
 
         }
 
@@ -92,7 +94,7 @@ public class AnxityMeter : MonoBehaviour
 
     private IEnumerator IncreaseScore()
     {
-        while (Anxietyscore < 100.1f)
+        while (Anxietyscore < 100.01f)
         {
             float Index = 0.1f;
 

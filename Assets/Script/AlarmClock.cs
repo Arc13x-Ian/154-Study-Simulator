@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class AlarmClock : MonoBehaviour
 {
+    private LevelLoader LevelLoader;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        LevelLoader = FindAnyObjectByType<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -19,7 +23,7 @@ public class AlarmClock : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(3);
+        LevelLoader.LoadNextLevel();
 
     }
 }
