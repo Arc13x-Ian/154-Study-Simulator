@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    private GameAddOns GameAddOns;
-    private QuizManager QuizManager;
-    private AnxityMeter AnxityMeter;
+    public GameAddOns GameAddOns;
+    public QuizManager QuizManager;
+    public AnxityMeter AnxityMeter;
 
     public Animator transition;
 

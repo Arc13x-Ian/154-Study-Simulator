@@ -25,12 +25,20 @@ public class AnxityMeter : MonoBehaviour
     public int min = 0;
     Coroutine Timerate;
 
+    public GameObject[] Books = null;
+    public TextMeshProUGUI totalBooks;
+    public TextMeshProUGUI UsedBooks;
+
     public PPtesting PostProcessEffect;
 
     void Start()
     {
         // Invoke the function to increase score every 1 second (change the second parameter as needed)
         StartCoroutine(IncreaseScore());
+
+        //the amount of books in level
+        Books = GameObject.FindGameObjectsWithTag("Book");
+        totalBooks.text = Books.Length.ToString("/0");
 
 
         //coroutine
@@ -89,6 +97,24 @@ public class AnxityMeter : MonoBehaviour
 
         }
 
+        // Create a list to store valid GameObjects
+        List<GameObject> validBooks = new List<GameObject>();
+
+        // Iterate through the Books array
+        for (int i = 0; i < Books.Length; i++)
+        {
+            // Check if the GameObject is not null
+            if (Books[i] != null)
+            {
+                // Add the GameObject to the validBooks list
+                validBooks.Add(Books[i]);
+            }
+        }
+
+        // Convert the validBooks list back to an array
+        Books = validBooks.ToArray();
+
+        UsedBooks.text = Books.Length.ToString("0");
 
     }
 
@@ -143,7 +169,7 @@ public class AnxityMeter : MonoBehaviour
            
             
             MinTimer.text = min.ToString("0");
-            SecTimer.text = seconds.ToString(":00");
+            SecTimer.text = seconds.ToString("00");
             yield return new WaitForSeconds(1);
         }
 
