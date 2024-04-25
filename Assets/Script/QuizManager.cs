@@ -11,7 +11,7 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestions;
     public int CorrectAnswerIndex = 0;
-    private int SCORE = 0;
+    public int SCORE = 0;
 
 
     public TextMeshProUGUI Questiontxt;
@@ -50,7 +50,7 @@ public class QuizManager : MonoBehaviour
         {
             GameAddOns.StudyDone = true;
             GameAddOns.StudyScreen.SetActive(false);
-            SceneManager.LoadScene("GameWinScreen");
+            //SceneManager.LoadScene("GameWinScreen");
         }
     }
 

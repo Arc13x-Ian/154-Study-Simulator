@@ -8,13 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Carpet
-  m_Shader: {fileID: 4800000, guid: 0da88218978564f2ea42d36f73b48fe6, type: 3}
-  m_ValidKeywords: []
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _EMISSION
+  - _NORMALMAP
   m_InvalidKeywords: []
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -50,7 +52,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 01ddeef715e194335bfb57ed4696a604, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Scale: {x: 40, y: 40}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -84,7 +86,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Gloss: 0.8
+    - _GlossMapScale: 1
     - _Glossiness: 0
+    - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -94,6 +98,8 @@ Material:
     - _Roughness: 0.985
     - _Sharpness: 0
     - _Shine: 0.023
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _Specularity: 0
     - _SrcBlend: 1
     - _TrueTiling: 5
@@ -102,6 +108,6 @@ Material:
     - _node_3978: 0
     - _node_7910: 0
     m_Colors:
-    - _Color: {r: 0.20754719, g: 0.12155216, b: 0.016447121, a: 1}
+    - _Color: {r: 0.48584908, g: 0.49271694, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

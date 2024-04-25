@@ -25,12 +25,20 @@ public class AnxityMeter : MonoBehaviour
     public int min = 0;
     Coroutine Timerate;
 
+    public GameObject[] Books = null;
+    public TextMeshProUGUI totalBooks;
+    public TextMeshProUGUI UsedBooks;
+
     public PPtesting PostProcessEffect;
 
     void Start()
     {
         // Invoke the function to increase score every 1 second (change the second parameter as needed)
         StartCoroutine(IncreaseScore());
+
+        //the amount of books in level
+        Books = GameObject.FindGameObjectsWithTag("Book");
+        totalBooks.text = Books.Length.ToString("/0");
 
 
         //coroutine
@@ -83,16 +91,36 @@ public class AnxityMeter : MonoBehaviour
             //end game
             Player.GameOver = true;
             Player.canMove = false;
-            SceneManager.LoadScene("GameOverScreen");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //SceneManager.LoadScene("GameOverScreen");
 
         }
 
+        // Create a list to store valid GameObjects
+        List<GameObject> validBooks = new List<GameObject>();
+
+        // Iterate through the Books array
+        for (int i = 0; i < Books.Length; i++)
+        {
+            // Check if the GameObject is not null
+            if (Books[i] != null)
+            {
+                // Add the GameObject to the validBooks list
+                validBooks.Add(Books[i]);
+            }
+        }
+
+        // Convert the validBooks list back to an array
+        Books = validBooks.ToArray();
+
+        UsedBooks.text = Books.Length.ToString("0");
 
     }
 
     private IEnumerator IncreaseScore()
     {
-        while (Anxietyscore < 100.1f)
+        while (Anxietyscore < 100.01f)
         {
             float Index = 0.1f;
 
@@ -141,7 +169,7 @@ public class AnxityMeter : MonoBehaviour
            
             
             MinTimer.text = min.ToString("0");
-            SecTimer.text = seconds.ToString(":00");
+            SecTimer.text = seconds.ToString("00");
             yield return new WaitForSeconds(1);
         }
 

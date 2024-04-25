@@ -12,6 +12,7 @@ public class GameAddOns : MonoBehaviour
     public bool GameOver = false;
     public bool freeze;
     FPSController FPSController;
+    public bool GameWin = false;
 
     //      Animatoin and Audio
     public AudioClip JumpSound;
@@ -53,7 +54,7 @@ public class GameAddOns : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        QuizManager = FindAnyObjectByType<QuizManager>();
         FPSController = FindAnyObjectByType<FPSController>();
         asPlayer = gameObject.AddComponent<AudioSource>();
         AnxityMeter = FindAnyObjectByType<AnxityMeter>();
@@ -80,13 +81,22 @@ public class GameAddOns : MonoBehaviour
             Study();
         }
 
+        if(QuizManager.SCORE >= 4)
+        {
+            GameWin = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            FPSController.walkSpeed = 0.001f;
+            FPSController.runSpeed = 0.0001f;
+        }
 
         //Gameover Logic
         if (GameOver)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Destroy(gameObject);
+            //gameObject.SetActive(false);
+            //Destroy(gameObject);
             //SceneManager.LoadScene("GameOverScreen");
             FPSController.walkSpeed = 0.001f;
             FPSController.runSpeed = 0.0001f;
