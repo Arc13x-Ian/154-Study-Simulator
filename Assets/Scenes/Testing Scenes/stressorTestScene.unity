@@ -1328,6 +1328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnackingStudent V2
       objectReference: {fileID: 0}
+    - target: {fileID: 2551681626918193201, guid: 4ce39106e59592646b78b86bf061213e, type: 3}
+      propertyPath: m_TagString
+      value: Stress Aura
+      objectReference: {fileID: 0}
     - target: {fileID: 2551681626918193211, guid: 4ce39106e59592646b78b86bf061213e, type: 3}
       propertyPath: m_RootOrder
       value: 1

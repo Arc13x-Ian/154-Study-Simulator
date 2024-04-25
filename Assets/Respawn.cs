@@ -9,6 +9,18 @@ public class Respawn : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("SafetyNet"))
+        {
+            RespawnPlayer(player);
+            transform.position = transform.position + new Vector3(0.0f, 0.0f, 1000f);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            RespawnPlayer(player);
+            transform.position = transform.position + new Vector3(0.0f, 0.0f, 1000f);
+        }
+
         RespawnPlayer(player);
     }
 

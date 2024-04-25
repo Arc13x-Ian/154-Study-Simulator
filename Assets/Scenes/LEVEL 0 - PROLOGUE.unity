@@ -5822,7 +5822,7 @@ GameObject:
   - component: {fileID: 1730290462}
   m_Layer: 0
   m_Name: Safety Net
-  m_TagString: Untagged
+  m_TagString: SafetyNet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5852,7 +5852,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 9000, y: 10, z: 9000}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1730290464
 Transform:
@@ -5862,8 +5862,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730290461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -379, z: -167.3}
-  m_LocalScale: {x: 600, y: 40, z: 900}
+  m_LocalPosition: {x: 0, y: -27.2, z: -167.3}
+  m_LocalScale: {x: 1, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5874,6 +5874,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1535381019623673784, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
   m_PrefabInstance: {fileID: 1559644895}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743510418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743510417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e17a5a538c348479e184e8aacc6e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1743510425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743510417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3863e522c29d7d84abd1a1f17eca9702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1743510417}
+  respawnSpot: {fileID: 84547263}
 --- !u!1001 &1768518296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6783,7 +6809,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087161899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -365, z: -167.3}
+  m_LocalPosition: {x: 0, y: -1597, z: -167.3}
   m_LocalScale: {x: 600, y: 40, z: 900}
   m_ConstrainProportionsScale: 0
   m_Children: []
