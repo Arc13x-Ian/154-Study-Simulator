@@ -11,6 +11,7 @@ TagManager:
   - Hazard
   - HeadPhones
   - Portal
+  - UI
   layers:
   - Default
   - TransparentFX

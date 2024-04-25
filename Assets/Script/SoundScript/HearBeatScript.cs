@@ -14,7 +14,7 @@ public class HearBeatScript : MonoBehaviour
     {
         Debug.Log("HeartbeatSoundManager script started.");
         audioSource = GetComponent<AudioSource>();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("UI");
         if (player != null)
         {
             anxityMeter = player.GetComponent<AnxityMeter>();
