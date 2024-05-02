@@ -15,8 +15,8 @@ public class QuizManager : MonoBehaviour
 
 
     public TextMeshProUGUI Questiontxt;
+    public TextMeshProUGUI BooksNeeded;
 
-    
 
     //reference to Player Variables
     public GameAddOns GameAddOns;
@@ -25,6 +25,7 @@ public class QuizManager : MonoBehaviour
     {
         generateQuestions();
 
+        BooksNeeded.text = "4";
 
 
         //we get the player script from somewhere from the scene
@@ -34,6 +35,8 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
+        int scoretracker = 4 - SCORE;
+
         if (GameAddOns.StudyDone == false)
         {
             if (CorrectAnswerIndex == 4)
@@ -45,6 +48,10 @@ public class QuizManager : MonoBehaviour
 
             }
         }
+
+        BooksNeeded.text = scoretracker.ToString();
+
+
 
         if (SCORE >= 4)
         {
