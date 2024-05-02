@@ -71,7 +71,7 @@ public class teleporterScript : MonoBehaviour
 
     IEnumerator Replay()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
 
         StartCoroutine(Portloop());
     }

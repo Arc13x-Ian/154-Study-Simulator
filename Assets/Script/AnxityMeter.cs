@@ -18,11 +18,12 @@ public class AnxityMeter : MonoBehaviour
     private float timePasted = 0f;
     public TextMeshProUGUI MinTimer;
     public TextMeshProUGUI SecTimer;
+    public TextMeshProUGUI AMPMTimer;
 
     public GameAddOns Player;
 
     public int seconds = 0;
-    public int min = 0;
+    public int min = 10;
     Coroutine Timerate;
 
     public GameObject[] Books = null;
@@ -162,6 +163,14 @@ public class AnxityMeter : MonoBehaviour
             {
                 min++;
                 seconds = 00;
+                if (min == 13)
+                {
+                    min = 1;
+                    AMPMTimer.text = "pm";
+
+
+                }
+                
 
                 
             }
