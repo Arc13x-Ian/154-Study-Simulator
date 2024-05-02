@@ -11,7 +11,6 @@ Material:
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _EMISSION
-  - _NORMALMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -27,7 +26,7 @@ Material:
         m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 85427bdebfaf04c7ab9fa728c31d2a53, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 0.2, y: -0.15}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -51,7 +50,7 @@ Material:
         m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 01ddeef715e194335bfb57ed4696a604, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 40, y: 40}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -108,6 +107,6 @@ Material:
     - _node_3978: 0
     - _node_7910: 0
     m_Colors:
-    - _Color: {r: 0.48584908, g: 0.49271694, b: 1, a: 1}
+    - _Color: {r: 0.2896938, g: 0.2896938, b: 0.5849056, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

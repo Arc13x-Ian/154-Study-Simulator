@@ -15,6 +15,7 @@ public class QuizManager : MonoBehaviour
 
 
     public TextMeshProUGUI Questiontxt;
+    public TextMeshProUGUI score;
 
     
 
@@ -34,6 +35,8 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
+        int scoreindex = 4;
+
         if (GameAddOns.StudyDone == false)
         {
             if (CorrectAnswerIndex == 4)
@@ -45,6 +48,10 @@ public class QuizManager : MonoBehaviour
 
             }
         }
+
+        scoreindex = scoreindex - SCORE;
+        score.text = scoreindex.ToString();
+
 
         if (SCORE >= 4)
         {
