@@ -35,33 +35,37 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
-        int scoreindex = 4;
+        int scoreindex = 0;
 
         if (GameAddOns.StudyDone == false)
         {
-            if (CorrectAnswerIndex == 4)
+            if (CorrectAnswerIndex >= 4)
             {
                 GameAddOns.StudyDone = true;
                 GameAddOns.StudyScreen.SetActive(false);
+                SCORE = SCORE + CorrectAnswerIndex;
                 CorrectAnswerIndex = 0;
-                ++SCORE;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 GameAddOns.canMove = true;
 
             }
         }
-
-        scoreindex = scoreindex - SCORE;
-        score.text = scoreindex.ToString();
-
-
-        if (SCORE >= 4)
-        {
+        if(CorrectAnswerIndex >= 4)
+            {   
             GameAddOns.StudyDone = true;
             GameAddOns.StudyScreen.SetActive(false);
-            //SceneManager.LoadScene("GameWinScreen");
+            SCORE = SCORE + CorrectAnswerIndex;
+            CorrectAnswerIndex = 0;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            GameAddOns.canMove = true;
+
         }
+
+        scoreindex = scoreindex + SCORE;
+        score.text = scoreindex.ToString();
+
     }
 
 
@@ -76,6 +80,7 @@ public class QuizManager : MonoBehaviour
             {
                 options[i].GetComponent<Answer>().isCorrect = true;
                 
+
             }
             
             
@@ -86,7 +91,7 @@ public class QuizManager : MonoBehaviour
     {
         
         QnA.RemoveAt(currentQuestions);
-        CorrectAnswerIndex++;
+        
         generateQuestions();
 
     }

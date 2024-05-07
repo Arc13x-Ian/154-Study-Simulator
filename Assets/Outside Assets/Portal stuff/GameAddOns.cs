@@ -84,7 +84,7 @@ public class GameAddOns : MonoBehaviour
 
         
 
-        if (QuizManager.SCORE >= 4)
+        if (QuizManager.SCORE >= 16)
         {
             GameWin = true;
             Cursor.lockState = CursorLockMode.None;
@@ -105,11 +105,10 @@ public class GameAddOns : MonoBehaviour
         //if there are no more questions from a book it needs to take the player out of the UI study screen
         if (StudyDone == true && !pause.isPaused)
         {
-            asPlayer.Stop();
             StudyScreen.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            //canMove = true;
+            canMove = true;
         }
 
     }

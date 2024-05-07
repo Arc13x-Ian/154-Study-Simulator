@@ -3215,7 +3215,7 @@ GameObject:
   - component: {fileID: 2297517099136543184}
   - component: {fileID: 6257425736708419140}
   m_Layer: 5
-  m_Name: Max book
+  m_Name: Max score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3269,7 +3269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: /4
+  m_text: /16
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -3332,7 +3332,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 154.9489, y: 28.463566, z: 168.50812, w: 72.26178}
+  m_margin: {x: 154.9489, y: 28.463566, z: 163.81572, w: 72.26178}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4526,7 +4526,7 @@ GameObject:
   - component: {fileID: 8790993975175764020}
   - component: {fileID: 3089111378564482286}
   m_Layer: 5
-  m_Name: Current book
+  m_Name: Current score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4930,7 +4930,7 @@ GameObject:
   - component: {fileID: 4485359029067918805}
   - component: {fileID: 641444653465066680}
   m_Layer: 5
-  m_Name: Book Needed
+  m_Name: score Needed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4984,7 +4984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'books needed:'
+  m_text: 'score needed:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da331c60880cf4f479b5ee7239ad3120, type: 2}
   m_sharedMaterial: {fileID: -8900319584875212057, guid: da331c60880cf4f479b5ee7239ad3120, type: 2}
@@ -5627,6 +5627,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1516770488554490135, guid: cb48a0644cb42cd41b5498649200c20e, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 3089111378564482286}
+    - target: {fileID: 1516770488554490135, guid: cb48a0644cb42cd41b5498649200c20e, type: 3}
       propertyPath: GameAddOns
       value: 
       objectReference: {fileID: 0}
@@ -5640,7 +5644,7 @@ PrefabInstance:
       objectReference: {fileID: 854909823894022190}
     - target: {fileID: 1516770488554490135, guid: cb48a0644cb42cd41b5498649200c20e, type: 3}
       propertyPath: CorrectAnswerIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1516770488554490135, guid: cb48a0644cb42cd41b5498649200c20e, type: 3}
       propertyPath: options.Array.data[0]
