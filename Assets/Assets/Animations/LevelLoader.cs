@@ -46,7 +46,7 @@ public class LevelLoader : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameWinScreen") || SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameOverScreen"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameWinScreen") || SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameOverScreen") || SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -75,6 +75,9 @@ public class LevelLoader : MonoBehaviour
 
     public void ReLoadMainMenu()
     {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         StartCoroutine(LoadLevel(1));
     }
 

@@ -45,6 +45,9 @@ public class QuizManager : MonoBehaviour
                 GameAddOns.StudyScreen.SetActive(false);
                 CorrectAnswerIndex = 0;
                 ++SCORE;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                GameAddOns.canMove = true;
 
             }
         }
