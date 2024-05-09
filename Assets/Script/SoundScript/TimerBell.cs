@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimerBell : MonoBehaviour
 {
     private AudioSource audioSource;
-    private float timerDuration = 300.0f; 
+    private float timerDuration = 454.0f; 
     private float timeElapsed = 0.0f;
     private bool hasPlayed = false; 
 
