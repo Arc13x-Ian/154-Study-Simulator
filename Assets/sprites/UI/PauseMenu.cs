@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //pause system
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Escape))
         {
             // Toggle pause state
             isPaused = !isPaused;

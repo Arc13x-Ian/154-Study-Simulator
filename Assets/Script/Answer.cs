@@ -33,6 +33,8 @@ public class Answer : MonoBehaviour
             StartCoroutine(FadeText());
             quizManager.correct();
         }
+        ++quizManager.QuizLimit;
+
     }
 
 

@@ -12,10 +12,12 @@ public class QuizManager : MonoBehaviour
     public int currentQuestions;
     public int CorrectAnswerIndex = 0;
     public int SCORE = 0;
+    public int QuizLimit;
 
 
     public TextMeshProUGUI Questiontxt;
     public TextMeshProUGUI score;
+    public TextMeshProUGUI score2;
 
     
 
@@ -36,35 +38,40 @@ public class QuizManager : MonoBehaviour
     private void Update()
     {
         int scoreindex = 0;
+        int scoreindex2 = 0;
 
         if (GameAddOns.StudyDone == false)
         {
-            if (CorrectAnswerIndex >= 4)
+            if (QuizLimit >= 4)
             {
                 GameAddOns.StudyDone = true;
                 GameAddOns.StudyScreen.SetActive(false);
                 SCORE = SCORE + CorrectAnswerIndex;
-                CorrectAnswerIndex = 0;
+                QuizLimit = 0;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 GameAddOns.canMove = true;
 
             }
         }
-        if(CorrectAnswerIndex >= 4)
+        if(QuizLimit >= 4)
             {   
             GameAddOns.StudyDone = true;
             GameAddOns.StudyScreen.SetActive(false);
             SCORE = SCORE + CorrectAnswerIndex;
-            CorrectAnswerIndex = 0;
+            QuizLimit = 0;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             GameAddOns.canMove = true;
 
         }
 
+        scoreindex2 = scoreindex2 + CorrectAnswerIndex;
+        score2.text = scoreindex2.ToString();
+
         scoreindex = scoreindex + SCORE;
         score.text = scoreindex.ToString();
+        
 
     }
 
