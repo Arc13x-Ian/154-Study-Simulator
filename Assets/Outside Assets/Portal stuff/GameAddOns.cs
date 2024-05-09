@@ -84,7 +84,7 @@ public class GameAddOns : MonoBehaviour
 
         
 
-        if (QuizManager.SCORE >= 16)
+        if (QuizManager.CorrectAnswerIndex >= 16)
         {
             GameWin = true;
             Cursor.lockState = CursorLockMode.None;
