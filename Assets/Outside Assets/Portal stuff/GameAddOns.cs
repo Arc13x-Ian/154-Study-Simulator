@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
+
 
 public class GameAddOns : MonoBehaviour
 {
@@ -47,8 +49,10 @@ public class GameAddOns : MonoBehaviour
     public bool EmptyLeftHand;
     public bool EmptyRightHand;
     public GameObject StudyScreen;
+    public PauseMenu pause;
     public QuizManager QuizManager;
     public AnxityMeter AnxityMeter;
+    public TextMeshProUGUI AnxietyText;
 
 
     // Start is called before the first frame update
@@ -70,24 +74,22 @@ public class GameAddOns : MonoBehaviour
         EmptyRightHand = true;
         StudyDone = true;
         StudyScreen.SetActive(false);
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Study();
-        }
 
-        if(QuizManager.SCORE >= 4)
+        
+
+        if (QuizManager.SCORE >= 16)
         {
             GameWin = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            FPSController.walkSpeed = 0.001f;
-            FPSController.runSpeed = 0.0001f;
+            canMove = false;
         }
 
         //Gameover Logic
@@ -95,29 +97,25 @@ public class GameAddOns : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            //gameObject.SetActive(false);
-            //Destroy(gameObject);
-            //SceneManager.LoadScene("GameOverScreen");
-            FPSController.walkSpeed = 0.001f;
-            FPSController.runSpeed = 0.0001f;
+            canMove = false;
         }
 
         InteractionsIF();
 
         //if there are no more questions from a book it needs to take the player out of the UI study screen
-        if (StudyDone == true)
+        if (StudyDone == true && !pause.isPaused)
         {
-            asPlayer.Stop();
             StudyScreen.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            canMove = true;
         }
 
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Stress Aura"))
+        if (other.CompareTag("Stress Aura") && !Headphones)
         {
 
             StartCoroutine(StressCollide());
@@ -158,6 +156,7 @@ public class GameAddOns : MonoBehaviour
         StudyScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+        canMove = false;
 
     }
 
@@ -268,10 +267,16 @@ public class GameAddOns : MonoBehaviour
 
             Headphones = true;
             StartCoroutine(Deaf());
+            
         }
         else
         {
             //Headphones = false;
+        }
+
+        if (!Headphones)
+        {
+            AnxietyText.color = Color.white;
         }
 
     }
@@ -281,14 +286,21 @@ public class GameAddOns : MonoBehaviour
         leftHandAnim.SetTrigger("UseHeadPhones");
         leftHandAnim.SetBool("HasHeadPhones", false);
         EmptyLeftHand = true;
-        for (int i = 0; i < 6; i++)
+        AnxietyText.color = Color.blue;
+        for (int i = 0; i < 11; i++)
         {
-            if(i == HeadPhoneDuration)
+            
+            if (i == HeadPhoneDuration)
             {
                 Headphones = false;
+                
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(HeadPhoneDuration);
+            //AnxietyText.color = Color.white;
         }
+        
     }
+
+    
 
 }

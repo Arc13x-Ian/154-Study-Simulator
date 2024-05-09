@@ -40,7 +40,7 @@ public class HeadBobScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            _frequency = 20.0f;
+            _frequency = 15.0f;
             _amplitude = 0.07f;
         }
         else if (!Input.GetKey(KeyCode.LeftShift))

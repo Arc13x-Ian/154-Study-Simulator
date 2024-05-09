@@ -23,6 +23,7 @@ public class Answer : MonoBehaviour
         {
 
             CorrectText.text = "Correct";
+            ++quizManager.CorrectAnswerIndex;
             StartCoroutine(FadeText());
             quizManager.correct();
         }
@@ -32,6 +33,8 @@ public class Answer : MonoBehaviour
             StartCoroutine(FadeText());
             quizManager.correct();
         }
+        ++quizManager.QuizLimit;
+
     }
 
 

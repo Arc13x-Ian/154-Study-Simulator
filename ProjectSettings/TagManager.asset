@@ -12,6 +12,8 @@ TagManager:
   - HeadPhones
   - Portal
   - UI
+  - SafetyNet
+  - Door
   layers:
   - Default
   - TransparentFX

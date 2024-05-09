@@ -12,10 +12,12 @@ public class QuizManager : MonoBehaviour
     public int currentQuestions;
     public int CorrectAnswerIndex = 0;
     public int SCORE = 0;
+    public int QuizLimit;
 
 
     public TextMeshProUGUI Questiontxt;
     public TextMeshProUGUI score;
+    public TextMeshProUGUI score2;
 
     
 
@@ -35,30 +37,42 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
-        int scoreindex = 4;
+        int scoreindex = 0;
+        int scoreindex2 = 0;
 
         if (GameAddOns.StudyDone == false)
         {
-            if (CorrectAnswerIndex == 4)
+            if (QuizLimit >= 4)
             {
                 GameAddOns.StudyDone = true;
                 GameAddOns.StudyScreen.SetActive(false);
-                CorrectAnswerIndex = 0;
-                ++SCORE;
+                SCORE = SCORE + CorrectAnswerIndex;
+                QuizLimit = 0;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                GameAddOns.canMove = true;
 
             }
         }
-
-        scoreindex = scoreindex - SCORE;
-        score.text = scoreindex.ToString();
-
-
-        if (SCORE >= 4)
-        {
+        if(QuizLimit >= 4)
+            {   
             GameAddOns.StudyDone = true;
             GameAddOns.StudyScreen.SetActive(false);
-            //SceneManager.LoadScene("GameWinScreen");
+            SCORE = SCORE + CorrectAnswerIndex;
+            QuizLimit = 0;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            GameAddOns.canMove = true;
+
         }
+
+        scoreindex2 = scoreindex2 + CorrectAnswerIndex;
+        score2.text = scoreindex2.ToString();
+
+        scoreindex = scoreindex + SCORE;
+        score.text = scoreindex.ToString();
+        
+
     }
 
 
@@ -73,6 +87,7 @@ public class QuizManager : MonoBehaviour
             {
                 options[i].GetComponent<Answer>().isCorrect = true;
                 
+
             }
             
             
@@ -83,7 +98,7 @@ public class QuizManager : MonoBehaviour
     {
         
         QnA.RemoveAt(currentQuestions);
-        CorrectAnswerIndex++;
+        
         generateQuestions();
 
     }
