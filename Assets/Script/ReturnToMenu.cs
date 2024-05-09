@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ReturnToMenu : MonoBehaviour
 {
+
+    private LevelLoader LevelLoader;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        LevelLoader = FindAnyObjectByType<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -19,10 +22,7 @@ public class ReturnToMenu : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        SceneManager.LoadScene(1);
+        LevelLoader.ReLoadMainMenu();
 
     }
 }

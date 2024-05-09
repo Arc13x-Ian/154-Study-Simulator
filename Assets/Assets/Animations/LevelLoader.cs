@@ -81,6 +81,12 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(1));
     }
 
+    public void LoadCredMuseum()
+    {
+        StartCoroutine(LoadLevel(6));
+
+    }
+
     IEnumerator LoadLevel(int LevelIndex)
     {
         //play animation
