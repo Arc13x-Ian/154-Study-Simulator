@@ -40,7 +40,7 @@ public class LevelLoader : MonoBehaviour
         }
 
 
-        if (QuizManager.SCORE >= 16)
+        if (QuizManager.CorrectAnswerIndex >= 16)
         {
             StartCoroutine(LoadLevel(5));
             Cursor.lockState = CursorLockMode.None;
