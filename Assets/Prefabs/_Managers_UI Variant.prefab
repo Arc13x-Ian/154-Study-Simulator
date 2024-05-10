@@ -135,6 +135,67 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1949448150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949448151}
+  - component: {fileID: 1949448152}
+  m_Layer: 0
+  m_Name: Book Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1949448151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949448150}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 854909824883065887}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949448152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949448150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e842669aca504a4ea3a9ad111f54454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameAddOns: {fileID: 0}
+  AnxityMeter: {fileID: 0}
+  Books: []
+  BookStack:
+  - {fileID: 1647110675972917433, guid: b3abf7fe71788fa429ff1acf24ccaff2, type: 3}
+  - {fileID: 7016939265641441811, guid: 43b51a1d696bd7f4ab96b0f9052be905, type: 3}
+  - {fileID: 1337019557285774531, guid: fecfc31466a028b4d9475eee33e1852e, type: 3}
+  - {fileID: 479751132641394234, guid: 16d1ee5e0b423b4429787b914680e569, type: 3}
+  - {fileID: 6344662694529815179, guid: 25dca57e255233440b08d8a6e20a337a, type: 3}
+  - {fileID: 8950009665213116879, guid: d223fe5961ee51547bafe512f2acbf91, type: 3}
+  - {fileID: 1587721329307075762, guid: 8ad5dfef15da10740ab647f23611effd, type: 3}
+  - {fileID: 7899063096926236192, guid: 08fb4d3c96a40d34698a8d8979b3c54b, type: 3}
+  BookScore: 0
+  score: {fileID: 3089111378564482286}
+  stackOffset: 0
+  StackSpot: {fileID: 0}
+  temp: 1
 --- !u!1 &400702376877055879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1982,7 @@ RectTransform:
   - {fileID: 1037838282}
   - {fileID: 5969502226968161860}
   - {fileID: 6435901174662017681}
+  - {fileID: 1949448151}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3272,7 +3334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: /16
+  m_text: /8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -6037,7 +6099,7 @@ PrefabInstance:
     - target: {fileID: 1516770488554490135, guid: cb48a0644cb42cd41b5498649200c20e, type: 3}
       propertyPath: score
       value: 
-      objectReference: {fileID: 3089111378564482286}
+      objectReference: {fileID: 1563761097286040636}
     - target: {fileID: 1516770488554490135, guid: cb48a0644cb42cd41b5498649200c20e, type: 3}
       propertyPath: score2
       value: 

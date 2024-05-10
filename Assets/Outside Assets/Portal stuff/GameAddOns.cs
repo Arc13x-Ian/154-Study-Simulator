@@ -42,6 +42,7 @@ public class GameAddOns : MonoBehaviour
     //      Tester bools for Methods
     private bool inRadius;
     public bool StudyDone;
+    public bool isPlacingDown;
 
     //       UI
     public Animator leftHandAnim;
@@ -50,7 +51,9 @@ public class GameAddOns : MonoBehaviour
     public bool EmptyRightHand;
     public GameObject StudyScreen;
     public PauseMenu pause;
-    public QuizManager QuizManager;
+    //public QuizManager QuizManager;
+    public BookManager BookManager;
+
     public AnxityMeter AnxityMeter;
     public TextMeshProUGUI AnxietyText;
 
@@ -58,7 +61,9 @@ public class GameAddOns : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        QuizManager = FindAnyObjectByType<QuizManager>();
+        //QuizManager = FindAnyObjectByType<QuizManager>();
+        BookManager = FindAnyObjectByType<BookManager>();
+
         FPSController = FindAnyObjectByType<FPSController>();
         asPlayer = gameObject.AddComponent<AudioSource>();
         AnxityMeter = FindAnyObjectByType<AnxityMeter>();
@@ -72,8 +77,8 @@ public class GameAddOns : MonoBehaviour
         //sets the hands empty at the start
         EmptyLeftHand = true;
         EmptyRightHand = true;
-        StudyDone = true;
-        StudyScreen.SetActive(false);
+        //StudyDone = true;
+        //StudyScreen.SetActive(false);
 
 
     }
@@ -83,8 +88,8 @@ public class GameAddOns : MonoBehaviour
     {
 
         
-
-        if (QuizManager.CorrectAnswerIndex >= 16)
+        //if the player wins!
+        if (BookManager.BookScore >= 8)
         {
             GameWin = true;
             Cursor.lockState = CursorLockMode.None;
@@ -102,6 +107,8 @@ public class GameAddOns : MonoBehaviour
 
         InteractionsIF();
 
+        /*
+
         //if there are no more questions from a book it needs to take the player out of the UI study screen
         if (StudyDone == true && !pause.isPaused)
         {
@@ -110,6 +117,8 @@ public class GameAddOns : MonoBehaviour
             Cursor.visible = false;
             canMove = true;
         }
+
+        */
 
     }
 
@@ -148,6 +157,8 @@ public class GameAddOns : MonoBehaviour
 
     }
 
+    /*
+
     private void Study()
     {
         Debug.Log("Study Atempt");
@@ -159,6 +170,8 @@ public class GameAddOns : MonoBehaviour
         canMove = false;
 
     }
+    */
+
 
     private void InteractionsIF()
     {
@@ -184,7 +197,7 @@ public class GameAddOns : MonoBehaviour
 
                     rightHandAnim.SetBool("HasBook", true);
                     EmptyRightHand = false;
-                    StudyDone = false;
+                    //StudyDone = false;
                     asPlayer.Play();
                     return;
                 }
@@ -200,7 +213,8 @@ public class GameAddOns : MonoBehaviour
 
                     rightHandAnim.SetTrigger("putBookDown");
                     rightHandAnim.SetBool("HasBook", false);
-                    Study();
+                    //Study();
+                    StartCoroutine(PuttingBookDown(1));
                     asPlayer.Play();
                     EmptyRightHand = true;
                     return;
@@ -301,6 +315,15 @@ public class GameAddOns : MonoBehaviour
         
     }
 
-    
+    //method to trigger a bool for a few seconds
+    public IEnumerator PuttingBookDown(float seconds)
+    {
+        isPlacingDown = true;
+        BookManager.placingBookDown();
+        Debug.Log("Coroutine started");
+        yield return new WaitForSeconds(seconds); // Wait for specified seconds
+        Debug.Log("Coroutine finished after " + seconds + " seconds");
+        isPlacingDown = false;
+    }
 
 }
