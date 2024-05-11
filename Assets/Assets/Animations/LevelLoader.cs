@@ -9,6 +9,7 @@ public class LevelLoader : MonoBehaviour
     public GameAddOns GameAddOns;
     public QuizManager QuizManager;
     public AnxityMeter AnxityMeter;
+    public BookManager BookManager;
 
     public Animator transition;
 
@@ -19,6 +20,7 @@ public class LevelLoader : MonoBehaviour
     {
         GameAddOns = FindAnyObjectByType<GameAddOns>();
         QuizManager = FindAnyObjectByType<QuizManager>();
+        BookManager = FindAnyObjectByType<BookManager>();
         AnxityMeter = FindAnyObjectByType<AnxityMeter>();
     }
 
@@ -40,7 +42,7 @@ public class LevelLoader : MonoBehaviour
         }
 
 
-        if (QuizManager.CorrectAnswerIndex >= 16)
+        if (BookManager.BookScore >= 8)
         {
             StartCoroutine(LoadLevel(5));
             Cursor.lockState = CursorLockMode.None;
