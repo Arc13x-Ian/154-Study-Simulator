@@ -25,6 +25,7 @@ public class AnxityMeter : MonoBehaviour
     public int seconds = 0;
     public int min = 10;
     Coroutine Timerate;
+    Color TimerColor;
 
     public GameObject[] Books = null;
     public TextMeshProUGUI totalBooks;
@@ -52,6 +53,9 @@ public class AnxityMeter : MonoBehaviour
         //finds Our Post Processing Volume
         PostProcessEffect = FindAnyObjectByType<PPtesting>();
 
+
+        TimerColor = MinTimer.color;
+
     }
 
     void Update()
@@ -69,6 +73,7 @@ public class AnxityMeter : MonoBehaviour
         {
             PostProcessEffect.frequency = 6f;
             PostProcessEffect.maxIntensity = 0.79f;
+            
         }
         if (Anxietyscore > 60)
         {
@@ -155,9 +160,18 @@ public class AnxityMeter : MonoBehaviour
 
     private IEnumerator TimeCounter()
     {
-        
         while (seconds <= 59)
         {
+            if (Player.TimeStop)
+            {
+                MinTimer.color = Color.cyan;
+                SecTimer.color = Color.cyan;
+                AMPMTimer.color = Color.cyan;
+
+                    yield return new WaitForSeconds(Player.TimeStopDuration);
+            }
+
+
             seconds++;
             if (seconds == 60)
             {
@@ -170,18 +184,19 @@ public class AnxityMeter : MonoBehaviour
 
 
                 }
-                
 
-                
+
+
             }
 
-           
-            
+
+            MinTimer.color = new Color(0.8392158f, 0.1921569f, 0.3019608f);
+            SecTimer.color = new Color(0.8392158f, 0.1921569f, 0.3019608f);
+            AMPMTimer.color = new Color(0.8392158f, 0.1921569f, 0.3019608f);
             MinTimer.text = min.ToString("0");
             SecTimer.text = seconds.ToString("00");
             yield return new WaitForSeconds(1);
         }
-
     }
 
 

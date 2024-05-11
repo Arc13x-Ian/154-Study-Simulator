@@ -13,7 +13,7 @@ public class GameAddOns : MonoBehaviour
     public bool canMove = true;
     public bool GameOver = false;
     public bool freeze;
-    FPSController FPSController;
+    public FPSController FPSController;
     public bool GameWin = false;
 
     //      Animatoin and Audio
@@ -33,11 +33,15 @@ public class GameAddOns : MonoBehaviour
     public Animator BorderIdle;
 
     //      Anxity Values for Game Mechanics
-    public int AnxityLvl;
+    public int AnxityLv1;
+    public int AnxityLv2;
+    public int AnxityLv3;
     public float AnxityEffectValue = 2.0f; // Set the Anxity effect rate
     public float anxityChangeDuration = 1.0f; // Set the duration for the Anxity effect change
     public bool Headphones = false; // a bool to turn off and on when the player has the headphones on
     private float HeadPhoneDuration = 4.0f;
+    public bool TimeStop = false;
+    public float TimeStopDuration;
 
     //      Tester bools for Methods
     private bool inRadius;
@@ -96,6 +100,34 @@ public class GameAddOns : MonoBehaviour
             Cursor.visible = true;
             canMove = false;
         }
+
+        if(AnxityMeter.Anxietyscore >= AnxityLv1)
+        {
+            FPSController.walkSpeed = 13;
+            FPSController.runSpeed = 17;
+            StartCoroutine(ChangeFOVOverTime(1, 70));
+
+        }
+        if(AnxityMeter.Anxietyscore >= AnxityLv2)
+        {
+            FPSController.walkSpeed = 15;
+            FPSController.runSpeed = 18;
+            StartCoroutine(ChangeFOVOverTime(1, 80));
+
+        }
+        if (AnxityMeter.Anxietyscore >= AnxityLv3)
+        {
+            FPSController.walkSpeed = 18;
+            FPSController.runSpeed = 21;
+            StartCoroutine(ChangeFOVOverTime(1, 90));
+
+        }
+        if (AnxityMeter.Anxietyscore < AnxityLv1)
+        {
+            resetPlayerStats();
+        }
+        
+
 
         //Gameover Logic
         if (GameOver)
@@ -259,6 +291,16 @@ public class GameAddOns : MonoBehaviour
 
 
                 }
+                
+                if (interactable != null && EmptyLeftHand == true && interactable.CompareTag("StopWatch"))
+                {
+                    interactable.ItemInteract(EmptyLeftHand);
+                    leftHandAnim.SetBool("HasStopWatch", true);
+                    EmptyLeftHand = false;
+                    //Debug.Log(interactable + " has been interacted with");
+
+
+                }
 
             }
 
@@ -275,6 +317,20 @@ public class GameAddOns : MonoBehaviour
             TeaSound.Instance.PlayTeaDrinkingSound(); //James Edit this
             EmptyLeftHand = true;
         }
+
+        //drinking tea function
+        if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasStopWatch"))
+        {
+            Debug.Log("Time Reverse!");
+            //do time action here
+            StartCoroutine(StopTimer());
+
+            leftHandAnim.SetBool("HasStopWatch", false);
+            leftHandAnim.SetTrigger("UseStopWatch");
+            
+            EmptyLeftHand = true;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.E) && canMove && !GameOver && EmptyLeftHand == false && leftHandAnim.GetBool("HasHeadPhones"))
         {
@@ -294,6 +350,8 @@ public class GameAddOns : MonoBehaviour
         }
 
     }
+
+
 
     private IEnumerator Deaf()
     {
@@ -315,6 +373,14 @@ public class GameAddOns : MonoBehaviour
         
     }
 
+    public IEnumerator StopTimer()
+    {
+        TimeStop = true;
+        yield return new WaitForSeconds(TimeStopDuration);
+        TimeStop = false;
+
+    }
+
     //method to trigger a bool for a few seconds
     public IEnumerator PuttingBookDown(float seconds)
     {
@@ -324,6 +390,37 @@ public class GameAddOns : MonoBehaviour
         yield return new WaitForSeconds(seconds); // Wait for specified seconds
         Debug.Log("Coroutine finished after " + seconds + " seconds");
         isPlacingDown = false;
+    }
+
+    IEnumerator ChangeFOVOverTime(int duration, float targetFOV)
+    {
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            // Increment the timer
+            timer += Time.deltaTime;
+
+            // Calculate the interpolation factor
+            float t = Mathf.Clamp01(timer / duration);
+
+            // Interpolate between the initial FOV and the target FOV
+            FPSController.cam.fieldOfView = Mathf.Lerp(FPSController.cam.fieldOfView, targetFOV, t);
+
+            // Wait for the end of frame before continuing the loop
+            yield return null;
+        }
+
+        // Ensure the FOV is exactly the target value when the duration is finished
+        FPSController.cam.fieldOfView = targetFOV;
+    }
+
+    private void resetPlayerStats()
+    {
+        FPSController.walkSpeed = 11;
+        FPSController.runSpeed = 15;
+        StartCoroutine(ChangeFOVOverTime(1,60));
+        
     }
 
 }

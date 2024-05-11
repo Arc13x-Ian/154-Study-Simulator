@@ -52,6 +52,11 @@ public class Interactable : MonoBehaviour
             //Debug.Log(gameObject + "is destroyed");
         }
 
+        else if (gameObject.tag == "StopWatch" && EmptyHand)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 

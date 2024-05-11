@@ -472,6 +472,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1037838284, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1949448152, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
       propertyPath: StackSpot
       value: 
@@ -2008,6 +2012,18 @@ PrefabInstance:
       propertyPath: DrinkTea
       value: 
       objectReference: {fileID: 8300000, guid: ba320dd6c3f5b4946aaba62e38de4b29, type: 3}
+    - target: {fileID: 906001728, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: AnxityLv1
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 906001728, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: AnxityLv2
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 906001728, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
+      propertyPath: AnxityLv3
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 906001728, guid: 5101aee443b6c4e028aae23d799c5fa4, type: 3}
       propertyPath: m_Enabled
       value: 1
