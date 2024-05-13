@@ -23,7 +23,7 @@ public class BookManager : MonoBehaviour
     {
         GameAddOns = FindAnyObjectByType<GameAddOns>();
         AnxityMeter = FindAnyObjectByType<AnxityMeter>();
-        stackOffset = StackSpot.transform.position.y;
+        stackOffset = 0f;
 
         studySpots = GameObject.FindGameObjectsWithTag("StackSpot");
     }
@@ -82,7 +82,7 @@ public class BookManager : MonoBehaviour
         {
             // Get the position to stack
             Transform StackAreas = studySpots[j].transform;
-            Vector3 StackDeck = new Vector3(StackAreas.position.x, stackOffset, StackAreas.position.z);
+            Vector3 StackDeck = new Vector3(StackAreas.position.x, StackAreas.position.y + stackOffset, StackAreas.position.z);
             
 
             // Instantiate a new copy of the object for each position
