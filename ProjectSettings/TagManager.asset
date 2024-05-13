@@ -15,6 +15,7 @@ TagManager:
   - SafetyNet
   - Door
   - StopWatch
+  - StackSpot
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,8 @@ public class BookManager : MonoBehaviour
     public GameObject StackSpot;
     public bool temp = true;
 
+    public GameObject[] studySpots;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class BookManager : MonoBehaviour
         GameAddOns = FindAnyObjectByType<GameAddOns>();
         AnxityMeter = FindAnyObjectByType<AnxityMeter>();
         stackOffset = StackSpot.transform.position.y;
+
+        studySpots = GameObject.FindGameObjectsWithTag("StackSpot");
     }
 
     // Update is called once per frame
@@ -74,12 +78,21 @@ public class BookManager : MonoBehaviour
         // Instantiate the selected object
         GameObject newObj = Instantiate(objectsToStack[i]);
 
-        // Get the position to stack
-        Transform stackArea = StackSpot.transform;
-        Vector3 stackPosition = new Vector3(stackArea.position.x, stackOffset, stackArea.position.z);
+        for (int j = 0; j < studySpots.Length; j++)
+        {
+            // Get the position to stack
+            Transform StackAreas = studySpots[j].transform;
+            Vector3 StackDeck = new Vector3(StackAreas.position.x, stackOffset, StackAreas.position.z);
+            
 
-        // Set the position of the instantiated object
-        newObj.transform.position = stackPosition;
+            // Instantiate a new copy of the object for each position
+            GameObject copyObj = Instantiate(newObj, StackDeck, Quaternion.identity);
+
+
+
+        }
+
+
 
         // Log the position of the stacked object
         Debug.Log(newObj.transform.position);
