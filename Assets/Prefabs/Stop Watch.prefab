@@ -4933,7 +4933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverHeight: 0.1
-  hoverSpeed: 6
+  hoverSpeed: 4
 --- !u!114 &3401254691687591355
 MonoBehaviour:
   m_ObjectHideFlags: 0

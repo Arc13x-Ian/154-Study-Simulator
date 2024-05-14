@@ -345,30 +345,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1037838284, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1949448152, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
       propertyPath: StackSpot
       value: 
       objectReference: {fileID: 433049354}
-    - target: {fileID: 854909824282553904, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 854909824282553904, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 854909824282553904, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 854909824282553904, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 854909824883065872, guid: 69c9b33772d35ab4fb5e82110af9764e, type: 3}
       propertyPath: m_Name
       value: '*Managers/UI'

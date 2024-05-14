@@ -9,6 +9,8 @@ using TMPro;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    
+    public GameObject ControlsMenuUI;
     public bool isPaused;
     private GameAddOns GameAddOns;
 
@@ -52,6 +54,7 @@ public class PauseMenu : MonoBehaviour
     {
         // Implement your settings menu functionality here
         Debug.Log("Open Settings Menu");
+        
     }
 
     public void QuitGame()
@@ -65,6 +68,7 @@ public class PauseMenu : MonoBehaviour
     {
         // Implement your controls menu functionality here
         Debug.Log("Open Controls Menu");
+        ControlsMenuUI.SetActive(true);
     }
 
     public void MainMenu()
@@ -91,6 +95,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f; // Resume the game by setting time scale to 1
         Debug.Log("Game Resumed");
         pauseMenuUI.SetActive(false);
+        ControlsMenuUI.SetActive(false);
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         GameAddOns.canMove = true;
