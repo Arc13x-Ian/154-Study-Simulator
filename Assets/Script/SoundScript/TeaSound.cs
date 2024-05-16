@@ -18,7 +18,7 @@ public class TeaSound : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

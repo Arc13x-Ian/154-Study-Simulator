@@ -47,6 +47,9 @@ GameObject:
   - component: {fileID: 906001727}
   - component: {fileID: 906001728}
   - component: {fileID: 755882091499483311}
+  - component: {fileID: 171281454}
+  - component: {fileID: 171281452}
+  - component: {fileID: 171281453}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -84,13 +87,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphicsObject: {fileID: 7665427741182837590}
-  walkSpeed: 4
-  runSpeed: 8
+  walkSpeed: 11
+  runSpeed: 15
   smoothMoveTime: 0.15
   jumpForce: 8
   gravity: 18
+  GameAddOns: {fileID: 0}
   lockCursor: 1
-  mouseSensitivity: 11
+  mouseSensitivity: 6
   pitchMinMax: {x: -40, y: 85}
   rotationSmoothTime: 0.1
   cam: {fileID: 0}
@@ -109,7 +113,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 5
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 70
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -126,9 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773e8781fef48014baf1605cf4b429a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkingSound: {fileID: 8300000, guid: 5234b7f0f221ac9409ff13505418ed73, type: 3}
-  RunningSound: {fileID: 8300000, guid: 5b6dfe6394158074b951c88072282d59, type: 3}
-  JumpSound: {fileID: 0}
+  WalkingSound: {fileID: 8300000, guid: c24397ecb2d359341bdc07298a000e52, type: 3}
+  RunningSound: {fileID: 8300000, guid: 3da578e8688e6c2459fcbd5032c2caad, type: 3}
+  JumpSound: {fileID: 8300000, guid: 38e65adbbddf24b47b3a1a9d700fbdfc, type: 3}
 --- !u!114 &906001727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,28 +163,150 @@ MonoBehaviour:
   canMove: 1
   GameOver: 0
   freeze: 0
+  FPSController: {fileID: 0}
+  GameWin: 0
   JumpSound: {fileID: 0}
   DeathSound: {fileID: 0}
-  BookPickUp: {fileID: 0}
-  Pick: {fileID: 0}
-  BookPutDown: {fileID: 0}
-  StudySound: {fileID: 0}
-  DrinkTea: {fileID: 0}
+  BookPickUp: {fileID: 8300000, guid: fee2265e66d98814fa70dee7959f84de, type: 3}
+  Pick: {fileID: 8300000, guid: fee2265e66d98814fa70dee7959f84de, type: 3}
+  BookPutDown: {fileID: 8300000, guid: c6f5ce712fea219469822d2347eb5bbe, type: 3}
+  StudySound: {fileID: 8300000, guid: a99fc33f9cee35f4a80336ea40475f82, type: 3}
+  DrinkTea: {fileID: 8300000, guid: ba320dd6c3f5b4946aaba62e38de4b29, type: 3}
   heartbeatSound: {fileID: 0}
   BorderIdle: {fileID: 0}
-  AnxityLvl: 0
+  AnxityLv1: 30
+  AnxityLv2: 50
+  AnxityLv3: 80
   AnxityEffectValue: 2
   anxityChangeDuration: 1
   Headphones: 0
+  TimeStop: 0
+  TimeStopDuration: 10
   StudyDone: 0
+  isPlacingDown: 0
   leftHandAnim: {fileID: 0}
   rightHandAnim: {fileID: 0}
   EmptyLeftHand: 0
   EmptyRightHand: 0
   StudyScreen: {fileID: 0}
-  QuizManager: {fileID: 0}
+  pause: {fileID: 0}
+  BookManager: {fileID: 0}
   AnxityMeter: {fileID: 0}
+  AnxietyText: {fileID: 0}
 --- !u!114 &755882091499483311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535381019623673784}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c051b6435fe60143acd75e7fc8d6204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enable: 1
+  _amplitude: 0.0464
+  _frequency: 16.9
+  _camera: {fileID: 1535381020191089681}
+  _cameraHolder: {fileID: 7343939021041835835}
+--- !u!82 &171281454
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535381019623673784}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.514
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &171281452
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,14 +315,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1535381019623673784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c051b6435fe60143acd75e7fc8d6204, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ca251de8ee655e4a9256a4602b25371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enable: 1
-  _amplitude: 0.015
-  _frequency: 10
-  _camera: {fileID: 1535381020191089681}
-  _cameraHolder: {fileID: 7343939021041835835}
+  drinkTeaSound: {fileID: 8300000, guid: ba320dd6c3f5b4946aaba62e38de4b29, type: 3}
+--- !u!114 &171281453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535381019623673784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae69e661a2e8ea448539b358f3c869f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartbeatSound: {fileID: 8300000, guid: f0ba5353bd325c1429fde0773ba0b032, type: 3}
 --- !u!1 &1535381020191089684
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +407,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!81 &1535381020191089687
@@ -403,7 +538,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7665427741182837590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

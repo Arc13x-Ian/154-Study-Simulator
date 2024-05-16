@@ -11,7 +11,7 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestions;
     public int CorrectAnswerIndex = 0;
-    public int SCORE = 0;
+    //public int SCORE = 0;
     public int QuizLimit;
 
 
@@ -46,7 +46,7 @@ public class QuizManager : MonoBehaviour
             {
                 GameAddOns.StudyDone = true;
                 GameAddOns.StudyScreen.SetActive(false);
-                SCORE = SCORE + CorrectAnswerIndex;
+                //SCORE = SCORE + CorrectAnswerIndex;
                 QuizLimit = 0;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -58,7 +58,7 @@ public class QuizManager : MonoBehaviour
             {   
             GameAddOns.StudyDone = true;
             GameAddOns.StudyScreen.SetActive(false);
-            SCORE = SCORE + CorrectAnswerIndex;
+            //SCORE = SCORE + CorrectAnswerIndex;
             QuizLimit = 0;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -69,7 +69,7 @@ public class QuizManager : MonoBehaviour
         scoreindex2 = scoreindex2 + CorrectAnswerIndex;
         score2.text = scoreindex2.ToString();
 
-        scoreindex = scoreindex + SCORE;
+        scoreindex = scoreindex + CorrectAnswerIndex;
         score.text = scoreindex.ToString();
         
 
