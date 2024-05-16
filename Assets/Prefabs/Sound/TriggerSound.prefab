@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffect: {fileID: 8300000, guid: c6f5ce712fea219469822d2347eb5bbe, type: 3}
-  delayInSeconds: 0.5
+  delayInSeconds: 0
 --- !u!65 &7379453176276046764
 BoxCollider:
   m_ObjectHideFlags: 0
