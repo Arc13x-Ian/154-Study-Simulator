@@ -20,15 +20,7 @@ public class Interactable : MonoBehaviour
 
         if(gameObject.tag == "Book" && EmptyHand)
         {
-            if (audioSource != null && PickupSound != null)
-            {
-                audioSource.PlayOneShot(PickupSound);
-                Destroy(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 
